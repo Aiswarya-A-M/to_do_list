@@ -13,21 +13,8 @@ const array=[{
     date:"31/10/2024",
     createDate:"31/6/2001"
 }]
-var taskList = document.getElementById("displayTable");
-array.forEach(function (task,index){
-    const tableRow=document.createElement("tr");
-    const tableDataId=document.createElement("td");
-    const tableDataName=document.createElement("td");
-    const viewButton=document.createElement("button");
-    viewButton.setAttribute("onclick", `view(${index})`)
-    viewButton.textContent="View";
-    tableDataId.innerHTML=(task.id);
-    tableDataName.innerHTML=(task.name);
-    tableDataName.appendChild(viewButton);
-    tableRow.appendChild(tableDataId);
-    tableRow.appendChild(tableDataName);
-    taskList.appendChild(tableRow);
-});
+
+
 
 function view(index){
     console.log(index);
@@ -40,4 +27,37 @@ function view(index){
         const popup = document.querySelector(`.viewPopUp`)
         popup.style.display="none";
     });
+}
+function addTask(){
+    document.getElementById("addForm").style.display="block";
+}
+function addItem(){
+    const name=document.getElementById("taskName");
+    const Id=document.getElementById("taskId");
+    newTask={
+        id:Id.value,
+        name:name.value
+    }
+    array.push(newTask);
+    var taskList = document.getElementById("displayTable");
+    taskList.innerHTML=" ";
+    array.forEach(function (task,index){
+        const tableRow=document.createElement("tr");
+        const tableDataId=document.createElement("td");
+        const tableDataName=document.createElement("td");
+        const viewButton=document.createElement("button");
+        viewButton.setAttribute("onclick", `view(${index})`)
+        viewButton.textContent="View";
+        tableDataId.innerHTML=(task.id);
+        tableDataName.innerHTML=(task.name);
+        tableDataName.appendChild(viewButton);
+        tableRow.appendChild(tableDataId);
+        tableRow.appendChild(tableDataName);
+        taskList.appendChild(tableRow);
+        
+    });
+    cancelItem();
+}
+function cancelItem(){
+    document.getElementById("addForm").style.display="none";
 }
