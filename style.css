@@ -47,10 +47,11 @@
         margin-top: 50px;
 
 }
-#head{
+.tasks{
+    float: left;
     text-align: center;
-    font-size: larger;
-    margin-left: 15%;
+    font-size: 250%;
+    margin-left: 45%;
 }
 
 #add{ 
@@ -61,7 +62,6 @@
     background-color: aqua;
     font-size: 350%;
     display: flex;
-    float:left;
     align-items:center ;
     justify-content: center;
     margin-left:75%
@@ -105,7 +105,7 @@
     display: none;
 }
 table, th, td {
-    border: 1px solid;
+    border: 1px solid ;
   }
 #editForm{
     height:300spx;;
@@ -120,4 +120,12 @@ table, th, td {
     display:none;
     background-color: aqua;
     position: absolute; 
+}
+.viewPopUp{
+    background-color: antiquewhite;
+    text-align: center;
+}
+#cancelViewPopup{
+    margin-top: 50%;
+
 }

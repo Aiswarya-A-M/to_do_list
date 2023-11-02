@@ -13,9 +13,10 @@
             <h1 id="heading">To Do</h1>
         </div>
         <div class="lower">
-            <button id="add" onclick="addTask()">+</button>            
+            <h2 class="tasks">Tasks</h2> 
+            <button id="add" onclick="addTask()">+</button>           
             <table class="displayTable" id="displayTable">
-                <h2 class="tasks">Tasks</h2> 
+                
                 <tr>
                     <th id="tableId"> Sl.NO  </th>
                     <th id="tableName"> Task Name  </th>
@@ -37,13 +38,13 @@
                 <label>Task Name:</label><br>
                 <input id="editName" type="text"  required><br>
                 <button id="editTask" type="button"  class="submit" > Edit </button>
-                <button id="cancelEditPopup" type="button"  class="submit" onclick="cancelItem()"> Cancel </button>  
+                <button id="cancelEdit" type="button"  class="submit" > Cancel </button>  
             </form>
             <div class="viewPopUp" id="viewPopUp">
                 <label> Task Name</label>
-                <input id="viewTask" type="text">
+                <input id="viewTask" type="text"><br><br><br>
                 <label> Task Id</label>
-                <input id="viewId" type="text">
+                <input id="viewId" type="text"><br>
                 <button class="cancel" id="cancelViewPopup">OK</button>
             </div>
             

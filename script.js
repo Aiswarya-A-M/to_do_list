@@ -32,7 +32,6 @@ function view(count){
         popup.style.display="none";
     });
 }
-
 function edit(count){
     console.log(count);
     const edit = document.querySelector(`#editForm`)
@@ -42,22 +41,16 @@ function edit(count){
             document.getElementById("editName").value=task.name;
             editTask.addEventListener("click",function(){
                 task.name=document.getElementById("editName").value;
-                console.log(task);
                 edit.style.display="none";
             });
         }
         
     })
     
-    cancelEditPopup.addEventListener("click",function(){
+    cancelEdit.addEventListener("click",function(){
         edit.style.display="none";
     })
 }
-
-
-
-
-
 function addTask(){
     document.getElementById("addForm").style.display="block";
 }
