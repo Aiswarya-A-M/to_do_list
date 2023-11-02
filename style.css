@@ -107,3 +107,17 @@
 table, th, td {
     border: 1px solid;
   }
+#editForm{
+    height:300spx;;
+    width:300px;
+    margin-top: 1%;
+    margin-left:45% ;
+    text-align: center;
+    font-size: 175%;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1%;
+    z-index: 3;
+    display:none;
+    background-color: aqua;
+    position: absolute; 
+}

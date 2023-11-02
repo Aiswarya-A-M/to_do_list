@@ -19,6 +19,7 @@
                 <tr>
                     <th id="tableId"> Sl.NO  </th>
                     <th id="tableName"> Task Name  </th>
+                    <th id="buttons"></th>
                 </tr>
                 <tr>
                     
@@ -28,14 +29,22 @@
                 <h2>Add Task</h2>
                 <label>Task Name:</label><br>
                 <input id="taskName" type="text"  required><br>
-                <label>Task Id:</label><br>
-                <input id="taskId" type="text"  required><br>
-                <button id="submit" type="button"  class="submit" onclick="addItem()"> Add </button>
-                <button id="submit" type="button"  class="submit" onclick="cancelItem()"> Cancel </button>  
+                <button id="addTask" type="button"  class="submit" onclick="addItem()"> Add </button>
+                <button id="cancelAddForm" type="button"  class="submit" onclick="cancelItem()"> Cancel </button>  
             </form>
-            <div class="viewPopUp">
-                <button id="ok">ok</button>
-                <button id="cancel">cancel</button>
+            <form id="editForm">
+                <h2>Edit Task</h2>
+                <label>Task Name:</label><br>
+                <input id="editName" type="text"  required><br>
+                <button id="editTask" type="button"  class="submit" > Edit </button>
+                <button id="cancelEditPopup" type="button"  class="submit" onclick="cancelItem()"> Cancel </button>  
+            </form>
+            <div class="viewPopUp" id="viewPopUp">
+                <label> Task Name</label>
+                <input id="viewTask" type="text">
+                <label> Task Id</label>
+                <input id="viewId" type="text">
+                <button class="cancel" id="cancelViewPopup">OK</button>
             </div>
             
         </div>
