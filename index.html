@@ -14,16 +14,18 @@
         </div>
         <div class="lower">
             <h2 class="tasks">Tasks</h2> 
-            <button id="add" onclick="addTask()">+</button>           
+            <button id="add" onclick="addTask()">+</button> 
+            <button id="clear" onclick="clearTask()">Clear</button>           
             <table class="displayTable" id="displayTable">
-                
-                <tr>
-                    <th id="tableId"> Sl.NO  </th>
-                    <th id="tableName"> Task Name  </th>
-                    <th id="buttons"></th>
+                <tr class="tableHead">
+                    <th id="tableId">   </th>
+                    <th id="tableTask">  </th>
+                    <th id="button"></th>
                 </tr>
-                <tr>
-                    
+                <tr class="tableRow">
+                    <th id="tableId">   </th>
+                    <th id="tableName">  </th>
+                    <th id="buttons"></th>
                 </tr>
             </table>
             <form id="addForm">
@@ -37,17 +39,22 @@
                 <h2>Edit Task</h2>
                 <label>Task Name:</label><br>
                 <input id="editName" type="text"  required><br>
-                <button id="editTask" type="button"  class="submit" > Edit </button>
+                <button id="editTask" type="button"  class="submit" >   Update </button>
                 <button id="cancelEdit" type="button"  class="submit" > Cancel </button>  
             </form>
             <div class="viewPopUp" id="viewPopUp">
                 <label> Task Name</label>
-                <input id="viewTask" type="text"><br><br><br>
+                <input id="viewTask" type="text" readonly><br><br><br>
                 <label> Task Id</label>
-                <input id="viewId" type="text"><br>
+                <input id="viewId" type="text" readonly><br>
                 <button class="cancel" id="cancelViewPopup">OK</button>
             </div>
-            
+            <div id="deletePopup">
+                <p>Do you want to delete?</p>
+                <button id="deleteConfirmation" type="button" class="submit"  >Delete</button>
+                <button id="cancelDelete" type="button" class="submit" onclick()="cancelConfirmation()">Cancel</button>
+            </div>
+
         </div>
     </div>
 </body>
