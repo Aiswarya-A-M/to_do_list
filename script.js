@@ -65,7 +65,7 @@ function addItem(){
     let createDate=new Date;
     let status="not comleted";
     arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
-   console.log("time...",time)
+    console.log("time...",time)
    
     newTask={
             id:count+1,
@@ -76,12 +76,9 @@ function addItem(){
             createDate:createDate.toISOString(),
             status:status
     }
-    display(newTask);
     arrayOfTasks.push(newTask);
     localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
-    console.log(arrayOfTasks);
-    console.log('next',arrayOfTasks[arrayOfTasks.length-1]);
-    //display();
+    display();
     cancelItem();
 }
 function cancelItem(){
@@ -97,14 +94,15 @@ function check(count){
         element.style.textDecoration="none";
        }
 }
-function display(task){
-    var taskList=document.getElementById("displayTable")
-
+function display(){
+    var taskList=document.getElementById("tableBody")
     arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
+    taskList.innerHTML=" ";
     arrayOfTasks.forEach(function (task){
         const tableRow=document.createElement("tr");
         const tableDataId=document.createElement("td");
         const tableDataName=document.createElement("td");
+        tableDataName.id="taskList";
         tableDataName.id="toggle"+`${task.id}`;
         const checkBox=document.createElement("input");
         const checkDiv=document.createElement("td");
@@ -131,6 +129,6 @@ function display(task){
         tableRow.appendChild(tableDataName);
         tableRow.appendChild(coloumnForButtons);
         taskList.appendChild(tableRow);  
-    });
+});
 }
 window.addEventListener('load', display());
