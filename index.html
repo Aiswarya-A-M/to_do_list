@@ -13,20 +13,20 @@
             <h1 id="heading">To Do</h1>
         </div>
         <div class="lower">
-            <h2 class="tasks">Tasks</h2> 
-            <button id="add" onclick="addTask()">+</button> 
-            <button id="clear" onclick="clearTask()">Clear</button>           
+            
+            <button id="addTask" onclick="addTask()">+</button> 
+            <button id="clearTask" onclick="clearTask()">Clear</button>  
+            <h2 class="tasks">Tasks</h2>          
             <table class="displayTable" id="displayTable">
                 <tr class="tableHead">
                     <th id="check"></th>
                     <th id="tableId"> Id  </th>
                     <th id="tableTask"> Task</th>
-                    <th id="button"></th>
+                    <th id="coloumnForButtons"></th>
                 </tr>
             </table>
             <form id="addForm">
                 <h2>Add Task</h2>
-                <button id="buttonClose" class="buttonClose" onclick="cancelItem()">X</button>
                 <label>Task Name:</label><br>
                 <input id="taskName" type="text"  required><br>    
                 <label>Priority:</label><br>
@@ -40,7 +40,7 @@
                 <input  type="date" id="taskDate" name="date" required><br><br>
                 <label for="date">Time</label><br>
                 <input  type="time" id="taskTime" name="time" required><br><br>            
-                <button id="addTask" type="button"  class="submit" onclick="addItem()"> Add </button>
+                <button id="addNewTask" type="button"  class="submit" onclick="addItem()"> Add </button>
                 <button id="cancelAddForm" type="button"  class="submit" onclick="cancelItem()"> Cancel </button>  
             </form>
             <form id="editForm">

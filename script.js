@@ -1,12 +1,13 @@
-function clearTask(){
-    array=[];
+
+function clearTask(){ 
+    arrayOfTasks=[];
     display();
 }
 function view(count){
     console.log(count);
     const popup = document.querySelector(`.viewPopUp`)
     popup.style.display="block";
-    const object = array.find(obj => obj.id === count);
+    const object = arrayOfTasks.find(obj => obj.id === count);
     document.getElementById("viewTask").value=object.name;
     document.getElementById("viewId").value=object.id;
     cancelViewPopup.addEventListener("click",function(){
@@ -17,7 +18,7 @@ function edit(count){
     console.log(count);
     const edit = document.querySelector(`#editForm`)
     edit.style.display="block";
-    array.forEach(task=>{
+    arrayOfTasks.forEach(task=>{
         if(task.id===count){
             document.getElementById("editName").value=task.name;
             editTask.addEventListener("click",function(){
@@ -36,8 +37,8 @@ function edit(count){
 function deleteTask(count){
     document.getElementById("deletePopup").style.display="block";
     deleteConfirmation.addEventListener("click",function(){
-        const index = array.findIndex(obj => obj.id === count);
-        array.splice(index,1);
+        const index = arrayOfTasks.findIndex(obj => obj.id === count);
+        arrayOfTasks.splice(index,1);
         display();
         document.getElementById("deletePopup").style.display="none";
     });
@@ -50,37 +51,37 @@ function addTask(){
 }
 function addItem(){
     let count;
-    if (array.length===0){
+    if (arrayOfTasks.length===0){
         count=0;
         console.log("inside",count);
     }else{
-        count=array[array.length-1].id;
+        count=arrayOfTasks[arrayOfTasks.length-1].id;
         console.log("inside else",count);
     }
-    console.log("outside loop",count);
     let name=document.getElementById("taskName");
     let priority=document.getElementById("taskPriority");
     let time=document.getElementById("taskTime");
     let date=document.getElementById("taskDate");
     let createDate=new Date;
     let status="not comleted";
-    array = JSON.parse(localStorage.getItem("array")) || [];
+    arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
    console.log("time...",time)
    
     newTask={
             id:count+1,
             name:name.value,
             priority:priority.value,
-             time:time.value,
-             date:date.value,
+            time:time.value,
+            date:date.value,
             createDate:createDate.toISOString(),
             status:status
     }
-    array.push(newTask);
-    localStorage.setItem("array", JSON.stringify(array));
-    console.log(array);
-    console.log('next',array[array.length-1]);
-    display();
+    display(newTask);
+    arrayOfTasks.push(newTask);
+    localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
+    console.log(arrayOfTasks);
+    console.log('next',arrayOfTasks[arrayOfTasks.length-1]);
+    //display();
     cancelItem();
 }
 function cancelItem(){
@@ -96,17 +97,18 @@ function check(count){
         element.style.textDecoration="none";
        }
 }
-function display(){
+function display(task){
     var taskList=document.getElementById("displayTable")
-    array = JSON.parse(localStorage.getItem("array")) || [];
-    array.forEach(function (task){
+
+    arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
+    arrayOfTasks.forEach(function (task){
         const tableRow=document.createElement("tr");
         const tableDataId=document.createElement("td");
         const tableDataName=document.createElement("td");
         tableDataName.id="toggle"+`${task.id}`;
         const checkBox=document.createElement("input");
         const checkDiv=document.createElement("td");
-        const buttons=document.createElement("td");
+        const coloumnForButtons=document.createElement("td");
         const viewButton=document.createElement("button");
         const editButton=document.createElement("button");
         const deleteButton=document.createElement("button");
@@ -121,14 +123,14 @@ function display(){
         tableDataId.innerHTML=(task.id);
         tableDataName.innerHTML=(task.name);
         checkDiv.appendChild(checkBox);
-        buttons.appendChild(viewButton);
-        buttons.appendChild(editButton);
-        buttons.appendChild(deleteButton);
+        coloumnForButtons.appendChild(viewButton);
+        coloumnForButtons.appendChild(editButton);
+        coloumnForButtons.appendChild(deleteButton);
         tableRow.appendChild(checkDiv);
         tableRow.appendChild(tableDataId);
         tableRow.appendChild(tableDataName);
-        tableRow.appendChild(buttons);
+        tableRow.appendChild(coloumnForButtons);
         taskList.appendChild(tableRow);  
-});
+    });
 }
 window.addEventListener('load', display());
