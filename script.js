@@ -1,5 +1,5 @@
 
-let array=[]/*[{
+let array=[];/*[{
     id:1,
     name:"aiswarya",
     priority:"Low",
@@ -97,7 +97,7 @@ function addItem(){
 function cancelItem(){
     document.getElementById("addForm").style.display="none";
 }
-function toggleColor(count){
+function check(count){
        let element=document.getElementById("toggle"+count);
        console.log(count);
        if (element.style.textDecoration!="line-through"){
@@ -108,7 +108,7 @@ function toggleColor(count){
        }
 }
 function display(){
-    var taskList = document.getElementById("displayTable");
+    var taskList = document.getElementById("tableRow");
     taskList.innerHTML=" ";
     array.forEach(function (task){
         /*const tableHead=document.createElement("tr");
@@ -120,14 +120,18 @@ function display(){
         const tableDataId=document.createElement("td");
         const tableDataName=document.createElement("td");
         tableDataName.id="toggle"+`${task.id}`;
+        const checkBox=document.createElement("input");
+        const checkDiv=document.createElement("td");
         const buttons=document.createElement("td");
         const viewButton=document.createElement("button");
         const editButton=document.createElement("button");
         const deleteButton=document.createElement("button");
+        
+        checkBox.type="checkbox";
         viewButton.setAttribute("onclick", `view(${task.id})`);
         editButton.setAttribute("onclick", `edit(${task.id})`);
         deleteButton.setAttribute("onclick", `deleteTask(${task.id})`);
-        tableRow.setAttribute("onclick", `toggleColor(${task.id})`);
+        checkBox.setAttribute("onclick", `check(${task.id})`);
         viewButton.textContent="View";
         editButton.textContent="Edit";
         deleteButton.textContent="Delete";
@@ -137,10 +141,11 @@ function display(){
        /* tableHead.appendChild(tableId);
         tableHead.appendChild(tableTask);
         taskList.appendChild(tableHead);*/
-        
+        checkDiv.appendChild(checkBox);
         buttons.appendChild(viewButton);
         buttons.appendChild(editButton);
         buttons.appendChild(deleteButton);
+        tableRow.appendChild(checkDiv);
         tableRow.appendChild(tableDataId);
         tableRow.appendChild(tableDataName);
         tableRow.appendChild(buttons);
