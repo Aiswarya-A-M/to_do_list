@@ -65,7 +65,7 @@ function addItem(){
         count=0;
         console.log("inside",count);
     }else{
-        count=arrayOfTasks[arrayOfTasks.length-1].id;
+        count=arrayOfTasks[0].id;
         console.log("inside else",count);
     }
     let name=document.getElementById("taskName");
@@ -87,6 +87,8 @@ function addItem(){
             status:status
     }
     arrayOfTasks.push(newTask);
+    arrayOfTasks.sort((a, b) => new Date(b.createDate) - new Date(a.createDate));
+
     localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
     addSuccess.style.display = "block";
     setTimeout(function() {

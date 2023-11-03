@@ -133,14 +133,18 @@
     background-color: rgb(255, 246, 246);
     width: 40%;
     margin-left: 30%;
-    height: 50%;
+    height: 30%;
     padding: 2%;
     position: absolute; 
     z-index: 3; 
     text-align: center;
     display: none;
+    
 }
-
+.successMsg{
+    text-align: center;
+    align-items: center;
+}
 .checkTable{
     margin-left: 0;
 }
@@ -183,6 +187,7 @@ th, td {
     text-align: center;
 }
 #clearPopup{
+
     align-items: center;
     width: 40%;
     margin-left: 30%;
