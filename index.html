@@ -20,11 +20,12 @@
             <table class="displayTable" id="displayTable">
                 <tr class="tableHead">
                     <th id="check"></th>
-                    <th id="tableId"> Id  </th>
-                    <th id="tableTask"> Task</th>
+                    <th id="tableTask"> Task List</th>
                     <th id="coloumnForButtons"></th>
                 </tr> 
-                <tr id="tableBody"></tr>
+                <tr id="tableBody">
+                    <td class="tableCheck"></td>
+                </tr>
             </table>
             <form id="addForm">
                 <h2>Add Task</h2>
@@ -62,6 +63,9 @@
                 <p>Do you want to delete?</p>
                 <button id="deleteConfirmation" type="button" class="submit"  >Delete</button>
                 <button id="cancelDelete" type="button" class="submit" onclick()="cancelConfirmation()">Cancel</button>
+            </div>
+            <div id="addSuccess">
+                <h1>You added task successfully!</h1>
             </div>
 
         </div>

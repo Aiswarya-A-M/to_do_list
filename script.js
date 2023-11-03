@@ -1,6 +1,8 @@
 
-function clearTask(){ 
+function clearTask(){
+    arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
     arrayOfTasks=[];
+    localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
     display();
 }
 function view(count){
@@ -78,11 +80,16 @@ function addItem(){
     }
     arrayOfTasks.push(newTask);
     localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
+    addSuccess.style.display = "block";
+    setTimeout(function() {
+        addSuccess.style.display = "none";
+    }, 2000);
     display();
     cancelItem();
 }
 function cancelItem(){
     document.getElementById("addForm").style.display="none";
+    
 }
 function check(count){
        let element=document.getElementById("toggle"+count);
@@ -100,12 +107,13 @@ function display(){
     taskList.innerHTML=" ";
     arrayOfTasks.forEach(function (task){
         const tableRow=document.createElement("tr");
-        const tableDataId=document.createElement("td");
+        //const tableDataId=document.createElement("td");
         const tableDataName=document.createElement("td");
         tableDataName.id="taskList";
         tableDataName.id="toggle"+`${task.id}`;
         const checkBox=document.createElement("input");
         const checkDiv=document.createElement("td");
+        checkDiv.className="checkTable";
         const coloumnForButtons=document.createElement("td");
         const viewButton=document.createElement("button");
         const editButton=document.createElement("button");
@@ -118,14 +126,14 @@ function display(){
         viewButton.textContent="View";
         editButton.textContent="Edit";
         deleteButton.textContent="Delete";
-        tableDataId.innerHTML=(task.id);
+        //tableDataId.innerHTML=(task.id);
         tableDataName.innerHTML=(task.name);
         checkDiv.appendChild(checkBox);
         coloumnForButtons.appendChild(viewButton);
         coloumnForButtons.appendChild(editButton);
         coloumnForButtons.appendChild(deleteButton);
         tableRow.appendChild(checkDiv);
-        tableRow.appendChild(tableDataId);
+        //tableRow.appendChild(tableDataId);
         tableRow.appendChild(tableDataName);
         tableRow.appendChild(coloumnForButtons);
         taskList.appendChild(tableRow);  
