@@ -1,4 +1,3 @@
-let array=[];
 function clearTask(){
     array=[];
     display();
@@ -7,12 +6,9 @@ function view(count){
     console.log(count);
     const popup = document.querySelector(`.viewPopUp`)
     popup.style.display="block";
-    array.forEach(task=>{
-        if(task.id===count){ 
-            document.getElementById("viewTask").value=task.name;
-            document.getElementById("viewId").value=task.id;
-        }
-    })
+    const object = array.find(obj => obj.id === count);
+    document.getElementById("viewTask").value=object.name;
+    document.getElementById("viewId").value=object.id;
     cancelViewPopup.addEventListener("click",function(){
         popup.style.display="none";
     });
@@ -40,13 +36,8 @@ function edit(count){
 function deleteTask(count){
     document.getElementById("deletePopup").style.display="block";
     deleteConfirmation.addEventListener("click",function(){
-        for (let i=0;i<array.length;i++){
-            if(array[i].id===count){    
-                array.splice(i,1);
-                console.log(array);
-                break;
-            }
-        }
+        const index = array.findIndex(obj => obj.id === count);
+        array.splice(index,1);
         display();
         document.getElementById("deletePopup").style.display="none";
     });
@@ -67,12 +58,27 @@ function addItem(){
         console.log("inside else",count);
     }
     console.log("outside loop",count);
-    const name=document.getElementById("taskName");
+    let name=document.getElementById("taskName");
+    let priority=document.getElementById("taskPriority");
+    let time=document.getElementById("taskTime");
+    let date=document.getElementById("taskDate");
+    let createDate=new Date;
+    let status="not comleted";
+    array = JSON.parse(localStorage.getItem("array")) || [];
+   console.log("time...",time)
+   
     newTask={
             id:count+1,
-            name:name.value
+            name:name.value,
+            priority:priority.value,
+             time:time.value,
+             date:date.value,
+            createDate:createDate.toISOString(),
+            status:status
     }
     array.push(newTask);
+    localStorage.setItem("array", JSON.stringify(array));
+    console.log(array);
     console.log('next',array[array.length-1]);
     display();
     cancelItem();
@@ -92,7 +98,7 @@ function check(count){
 }
 function display(){
     var taskList=document.getElementById("displayTable")
-    taskList.innerHTML=" ";
+    array = JSON.parse(localStorage.getItem("array")) || [];
     array.forEach(function (task){
         const tableRow=document.createElement("tr");
         const tableDataId=document.createElement("td");
@@ -104,7 +110,6 @@ function display(){
         const viewButton=document.createElement("button");
         const editButton=document.createElement("button");
         const deleteButton=document.createElement("button");
-        
         checkBox.type="checkbox";
         viewButton.setAttribute("onclick", `view(${task.id})`);
         editButton.setAttribute("onclick", `edit(${task.id})`);
@@ -125,6 +130,5 @@ function display(){
         tableRow.appendChild(buttons);
         taskList.appendChild(tableRow);  
 });
-
-
 }
+window.addEventListener('load', display());
