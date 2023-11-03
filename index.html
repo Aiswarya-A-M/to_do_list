@@ -62,10 +62,18 @@
             <div id="deletePopup">
                 <p>Do you want to delete?</p>
                 <button id="deleteConfirmation" type="button" class="submit"  >Delete</button>
-                <button id="cancelDelete" type="button" class="submit" onclick()="cancelConfirmation()">Cancel</button>
+                <button id="cancelDelete" type="button" class="submit" onclick="cancelConfirmation()">Cancel</button>
+            </div>
+            <div id="clearPopup">
+                <p id="clearPara">Do you want to clear all?</p>
+                <button id="clearConfirmation" type="button" class="submit" onclick="clearConfirmation()"  >Clear</button>
+                <button id="cancelClearId" type="button" class="submit" onclick="cancelItem()">Cancel</button>
             </div>
             <div id="addSuccess">
                 <h1>You added task successfully!</h1>
+            </div>
+            <div id="clearSuccess">
+                <h1>You deleted all tasks successfully!</h1>
             </div>
 
         </div>

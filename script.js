@@ -1,9 +1,17 @@
 
 function clearTask(){
+    clearPopup.style.display="block";
+}
+function clearConfirmation(){
     arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
     arrayOfTasks=[];
     localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
     display();
+    clearSuccess.style.display="block";
+    setTimeout(function() {
+        clearSuccess.style.display = "none";
+        clearPopup.style.display="none";
+    }, 500);
 }
 function view(count){
     console.log(count);
@@ -88,9 +96,11 @@ function addItem(){
     cancelItem();
 }
 function cancelItem(){
-    document.getElementById("addForm").style.display="none";
-    
+    document.getElementById("addForm").style.display="none"; 
+    document.getElementById("clearPopup").style.display="none";
 }
+
+
 function check(count){
        let element=document.getElementById("toggle"+count);
        console.log(count);
