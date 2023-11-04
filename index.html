@@ -13,13 +13,12 @@
             <h1 id="heading">To Do</h1>
         </div>
         <div class="lower">
-            
-            <button id="addTask" onclick="addTask()">+</button> 
-            <button id="clearTask" onclick="clearTask()">Clear</button>  
-            <h2 class="tasks">Tasks</h2>          
+            <div class="topLayer"> 
+            <!-- <h2 class="tasks">Tasks</h2>           -->
             <table class="displayTable" id="displayTable">
                 <tr class="tableHead">
                     <th id="check"></th>
+                    <th id="tableId">Id</th>
                     <th id="tableTask"> Task List</th>
                     <th id="coloumnForButtons"></th>
                 </tr> 
@@ -27,6 +26,9 @@
                     <td class="tableCheck"></td>
                 </tr>
             </table>
+            <button id="addTask" onclick="addTask()">+</button> 
+            <button id="clearTask" onclick="clearTask()">Clear</button> 
+            </div>
             <form id="addForm">
                 <h2>Add Task</h2>
                 <label>Task Name:</label><br>

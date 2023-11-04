@@ -1,6 +1,7 @@
 function clearTask(){
     clearPopup.style.display="block";
 }
+
 function clearConfirmation(){
     arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
     arrayOfTasks=[];
@@ -12,8 +13,8 @@ function clearConfirmation(){
         clearPopup.style.display="none";
     }, 2000);
 }
+
 function view(count){
-    console.log(count);
     const popup = document.querySelector(`.viewPopUp`)
     popup.style.display="block";
     const object = arrayOfTasks.find(obj => obj.id === count);
@@ -30,7 +31,6 @@ function view(count){
 }
 
 function edit(count){
-    console.log(count);
     const edit = document.querySelector(`#editForm`)
     edit.style.display="block";
     const object = arrayOfTasks.find(obj => obj.id === count);
@@ -44,18 +44,18 @@ function edit(count){
     const updatedDate = document.getElementById("editDate").value;
     const updatedTime = document.getElementById("editTime").value;
     const updatedTasks = arrayOfTasks.map(task => {
-            if (task.id === count) {
-                return {
-                    id:task.id,
-                    name: updatedName,
-                    priority: updatedPriority,
-                    date: updatedDate,
-                    time: updatedTime,
-                    createDate:task.createDate,
-                    status:task.status        
-                };
-            }
-            return task;
+        if (task.id === count) {
+            return {
+                id:task.id,
+                name: updatedName,
+                priority: updatedPriority,
+                date: updatedDate,
+                time: updatedTime,
+                createDate:task.createDate,
+                status:task.status        
+            };
+        }
+        return task;
     });
     localStorage.setItem("arrayOfTasks", JSON.stringify(updatedTasks));
     display();
@@ -66,15 +66,12 @@ function edit(count){
     }, 2000);
     });  
 }
+
 function deleteTask(count){
-    console.log(count);
     deletePopup.style.display="block";
     arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
-    console.log(arrayOfTasks);
     deleteConfirmation.addEventListener("click",function(){
-        console.log("hi");
         const index = arrayOfTasks.findIndex(obj => obj.id === count);
-        console.log(index);
         arrayOfTasks.splice(index,1);
         localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
         deleteSuccess.style.display="block";
@@ -87,20 +84,19 @@ function deleteTask(count){
 }
 
 function check(count){
-       let element=document.getElementById("toggle"+count);
-       arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
-       console.log(count);
-       const object = arrayOfTasks.find(obj => obj.id === count);
-       if (element.style.textDecoration!="line-through"){
-            element.style.textDecoration="line-through";
-            console.log("hi")
-            object.status="Completed";
-       }else{
-            element.style.textDecoration="none";
-            object.status="not completed";
-       }
-       localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
+    let element=document.getElementById("toggle"+count);
+    arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
+    const object = arrayOfTasks.find(obj => obj.id === count);
+    if(element.style.textDecoration!="line-through"){
+        element.style.textDecoration="line-through";
+        object.status="Completed";
+    }else{
+        element.style.textDecoration="none";
+        object.status="not completed";
+    }
+    localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
 }
+
 function cancelItem(){
     addForm.style.display="none"; 
     clearPopup.style.display="none";
@@ -116,10 +112,8 @@ function addItem(){
     let count;
     if (arrayOfTasks.length===0){
         count=0;
-        console.log("inside",count);
     }else{
         count=arrayOfTasks[0].id;
-        console.log("inside else",count);
     }
     let name=document.getElementById("taskName");
     let priority=document.getElementById("taskPriority");
@@ -128,20 +122,17 @@ function addItem(){
     let createDate=new Date;
     let status="not completed";
     arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
-    console.log("time...",time)
-   
     newTask={
-            id:count+1,
-            name:name.value,
-            priority:priority.value,
-            time:time.value,
-            date:date.value,
-            createDate:createDate.toISOString(),
-            status:status
+        id:count+1,
+        name:name.value,
+        priority:priority.value,
+        time:time.value,
+        date:date.value,
+        createDate:createDate.toISOString(),
+        status:status
     }
     arrayOfTasks.push(newTask);
     arrayOfTasks.sort((a, b) => new Date(b.createDate) - new Date(a.createDate));
-
     localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
     addSuccess.style.display = "block";
     setTimeout(function() {
@@ -151,13 +142,14 @@ function addItem(){
     cancelItem();
     addForm.reset();
 }
+
 function display(){
     var taskList=document.getElementById("tableBody")
     arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
     taskList.innerHTML=" ";
     arrayOfTasks.forEach(function (task){
         const tableRow=document.createElement("tr");
-        console.log(task.priority);
+        const coloumnForButtons=document.createElement("td");
         switch (task.priority) {  
             case "low":
                 tableRow.style.backgroundColor = "rgb(222, 229, 222)";
@@ -181,7 +173,7 @@ function display(){
         const checkBox=document.createElement("input");
         const checkDiv=document.createElement("td");
         checkDiv.className="checkTable";
-        const coloumnForButtons=document.createElement("td");
+        coloumnForButtons.className="coloumnForButtons"
         const viewButton=document.createElement("button");
         const editButton=document.createElement("button");
         const deleteButton=document.createElement("button");
@@ -203,7 +195,8 @@ function display(){
         tableRow.appendChild(tableDataId);
         tableRow.appendChild(tableDataName);
         tableRow.appendChild(coloumnForButtons);
-        taskList.appendChild(tableRow);  
+        taskList.appendChild(tableRow); 
 });
 }
+
 window.addEventListener('load', display());
