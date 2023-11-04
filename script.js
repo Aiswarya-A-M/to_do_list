@@ -20,9 +20,11 @@ function view(count){
     const object = arrayOfTasks.find(obj => obj.id === count);
     document.getElementById("viewTask").textContent=object.name;
     document.getElementById("viewPriority").textContent=object.priority;
-    document.getElementById("viewDate").textContent=object.date;
-    document.getElementById("viewTime").textContent=object.time;
-    document.getElementById("viewCreateDate").textContent=object.createDate;
+    document.getElementById("viewTime").textContent=object.scheduledTime;
+    const formattedCreateDateScheduledDate = new Date(object.scheduledDate).toLocaleDateString('en-GB');
+    const formattedCreateDate = new Date(object.createDate).toLocaleDateString('en-GB');
+    document.getElementById("viewDate").textContent=formattedCreateDateScheduledDate;
+    document.getElementById("viewCreateDate").textContent=formattedCreateDate;
     document.getElementById("viewStatus").textContent=object.status;
     document.getElementById("viewId").textContent=object.id;
     cancelView.addEventListener("click",function(){
@@ -36,8 +38,8 @@ function edit(count){
     const object = arrayOfTasks.find(obj => obj.id === count);
     document.getElementById("editName").value=object.name;
     document.getElementById("editPriority").value=object.priority;
-    document.getElementById("editDate").value=object.date;
-    document.getElementById("editTime").value=object.time;
+    document.getElementById("editDate").value=object.scheduledDate;
+    document.getElementById("editTime").value=object.scheduledTime;
     editTask.addEventListener("click", function () {
     const updatedName = document.getElementById("editName").value;
     const updatedPriority = document.getElementById("editPriority").value;
@@ -49,8 +51,8 @@ function edit(count){
                 id:task.id,
                 name: updatedName,
                 priority: updatedPriority,
-                date: updatedDate,
-                time: updatedTime,
+                scheduledDate: updatedDate,
+                scheduledTime: updatedTime,
                 createDate:task.createDate,
                 status:task.status        
             };
@@ -72,11 +74,13 @@ function deleteTask(count){
     arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
     deleteConfirmation.addEventListener("click",function(){
         const index = arrayOfTasks.findIndex(obj => obj.id === count);
-        console.log(index);
-        arrayOfTasks.splice(index,1);
-        localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
-        deleteSuccess.style.display="block";
-        display();
+        if (index !== -1){
+            arrayOfTasks.splice(index,1);
+            localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
+            deleteSuccess.style.display="block";
+            display();
+
+        }
     });  
     setTimeout(function() {
         deleteSuccess.style.display = "none";
@@ -112,24 +116,24 @@ function addTask(){
 function addItem(){
     let count;
     if (arrayOfTasks.length===0){
-        count=1;
+        count=0;
     }else{
-        count = Math.max(...arrayOfTasks.map(task => task.id)) + 1;
+        count = Math.max(...arrayOfTasks.map(task => task.id));
     }
     let name=document.getElementById("taskName");
     let priority=document.getElementById("taskPriority");
-    let time=document.getElementById("taskTime");
-    let date=document.getElementById("taskDate");
-    let createDate=new Date;
+    let scheduledTime=document.getElementById("taskTime");
+    let scheduledDate=document.getElementById("taskDate").value;
+    let createDate=new Date();
     let status="not completed";
     arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
     newTask={
-        id:count,
+        id:count+1,
         name:name.value,
         priority:priority.value,
-        time:time.value,
-        date:date.value,
-        createDate:createDate.toISOString(),
+        scheduledTime:scheduledTime.value,
+        scheduledDate:scheduledDate,
+        createDate:createDate,
         status:status
     }
     arrayOfTasks.push(newTask);
