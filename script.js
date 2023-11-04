@@ -23,25 +23,21 @@ function view(count){
         popup.style.display="none";
     });
 }
+
 function edit(count){
     console.log(count);
     const edit = document.querySelector(`#editForm`)
     edit.style.display="block";
-    arrayOfTasks.forEach(task=>{
-        if(task.id===count){
-            document.getElementById("editName").value=task.name;
-            editTask.addEventListener("click",function(){
-                task.name=document.getElementById("editName").value;
-                display();
-                edit.style.display="none";
-            });
-        }
+    const object = arrayOfTasks.find(obj => obj.id === count);
+    document.getElementById("editName").value=object.name;
+    const index = arrayOfTasks.findIndex(obj => obj.id === count);
+    editTask.addEventListener("click",function(){
+        arrayOfTasks[index].name=document.getElementById("editName").value;
+        console.log(arrayOfTasks);
+        console.log();
         localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
-    });
-    
-    cancelEdit.addEventListener("click",function(){
-        edit.style.display="none";
-    })
+        display();
+    });  
 }
 function deleteTask(count){
     console.log(count);
