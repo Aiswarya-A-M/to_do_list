@@ -11,4 +11,6 @@ date and time and its priority.
 6.Datas will not deleted once you close the web.
 
 #How to use
+
 To use this todoList, simply open the index.html file in your web browser
+file:///home/aiswarya/Videos/Screencasts/todo.webm
