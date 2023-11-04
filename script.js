@@ -30,13 +30,32 @@ function edit(count){
     edit.style.display="block";
     const object = arrayOfTasks.find(obj => obj.id === count);
     document.getElementById("editName").value=object.name;
-    const index = arrayOfTasks.findIndex(obj => obj.id === count);
-    editTask.addEventListener("click",function(){
-        arrayOfTasks[index].name=document.getElementById("editName").value;
-        console.log(arrayOfTasks);
-        console.log();
-        localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
-        display();
+    document.getElementById("editPriority").value=object.Priority;
+    document.getElementById("editDate").value=object.date;
+    document.getElementById("editTime").value=object.time;
+    editTask.addEventListener("click", function () {
+    const updatedName = document.getElementById("editName").value;
+    const updatedPriority = document.getElementById("editPriority").value;
+    const updatedDate = document.getElementById("editDate").value;
+    const updatedTime = document.getElementById("editTime").value;
+    const updatedTasks = arrayOfTasks.map(task => {
+            if (task.id === count) {
+                return {
+                    name: updatedName,
+                    Priority: updatedPriority,
+                    date: updatedDate,
+                    time: updatedTime,
+                };
+            }
+            return task;
+    });
+    localStorage.setItem("arrayOfTasks", JSON.stringify(updatedTasks));
+    display();
+    edit.style.display="none";
+    editSuccess.style.display = "block";
+    setTimeout(function() {
+        editSuccess.style.display = "none";
+    }, 2000);
     });  
 }
 function deleteTask(count){
@@ -78,6 +97,7 @@ function cancelItem(){
     addForm.style.display="none"; 
     clearPopup.style.display="none";
     deletePopup.style.display="none";
+    document.getElementById("editForm").style.display="none";
 }
 
 function addTask(){

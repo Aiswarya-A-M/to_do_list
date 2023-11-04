@@ -116,7 +116,7 @@
     background-color: antiquewhite;
     text-align: center;
 }
-#addSuccess{
+.success{
     align-items: center;
     background-color: rgb(255, 246, 246);
     width: 40%;
@@ -128,32 +128,7 @@
     text-align: center;
     display: none;
 }
-#clearSuccess{
-    align-items: center;
-    background-color: rgb(255, 246, 246);
-    width: 40%;
-    margin-left: 30%;
-    height: 30%;
-    padding: 2%;
-    position: absolute; 
-    z-index: 3; 
-    text-align: center;
-    display: none;
-    
-}
-#deleteSuccess
-{
-    align-items: center;
-    background-color: rgb(255, 246, 246);
-    width: 40%;
-    margin-left: 30%;
-    height: 30%;
-    padding: 2%;
-    position: absolute; 
-    z-index: 3; 
-    text-align: center;
-    display: none;
-}
+
 .successMessage{
     text-align: center;
     align-items: center;
@@ -169,12 +144,11 @@ th, td {
 
 }
 #editForm{
-    height:300spx;;
+    height:300px;
     width:300px;
-    margin-top: 1%;
-    margin-left:45% ;
+    margin-left:38% ;
     text-align: center;
-    font-size: 175%;
+    font-size: 110%;
     font-family: Arial, Helvetica, sans-serif;
     padding: 1%;
     z-index: 3;

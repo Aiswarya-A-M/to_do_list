@@ -49,6 +49,17 @@
                 <h2>Edit Task</h2>
                 <label>Task Name:</label><br>
                 <input id="editName" type="text"  required><br>
+                <label>Priority:</label><br>
+                <select id="editPriority" name="priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                    <option value="severe">Severe</option>
+                </select><br>
+                <label for="date">Date</label><br>
+                <input  type="date" id="editDate" name="date" required><br><br>
+                <label for="date">Time</label><br>
+                <input  type="time" id="editTime" name="time" required><br><br>       
                 <button id="editTask" type="button"  class="submit" >   Update </button>
                 <button id="cancelEdit" type="button"  class="submit" > Cancel </button>  
             </form>
@@ -69,14 +80,17 @@
                 <button id="clearConfirmation" type="button" class="submit" onclick="clearConfirmation()"  >Clear</button>
                 <button id="cancelClearId" type="button" class="submit" onclick="cancelItem()">Cancel</button>
             </div>
-            <div id="addSuccess">
+            <div class="success" id="addSuccess">
                 <h1 class="successMsg">You added task successfully!</h1>
             </div>
-            <div id="clearSuccess">
+            <div class="success" id="clearSuccess">
                 <h1 class="successMsg">You deleted all tasks successfully!</h1>
             </div>
-            <div id="deleteSuccess">
+            <div class="success" id="deleteSuccess">
                 <h1 class="successMsg">You delete task successfully!</h1>
+            </div>
+            <div class="success" id="editSuccess">
+                <h1 class="successMsg">You edit task successfully!</h1>
             </div>
 
         </div>
