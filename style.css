@@ -29,6 +29,7 @@
     
 }
 #heading{
+    float: left;
     font-family:'cursive';
     font-weight: bolder;
     font-style: oblique;
@@ -217,4 +218,12 @@ th, td {
     width:60px;
     margin-left:28px ;
     background-color: antiquewhite;
+}
+#imgOfLogo{
+   align-items: center;
+   width: 100px;
+   margin-top: 10px;
+
+   float: left;
+   margin-left: 450px;
 }

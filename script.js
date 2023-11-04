@@ -72,6 +72,7 @@ function deleteTask(count){
     arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
     deleteConfirmation.addEventListener("click",function(){
         const index = arrayOfTasks.findIndex(obj => obj.id === count);
+        console.log(index);
         arrayOfTasks.splice(index,1);
         localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
         deleteSuccess.style.display="block";
@@ -111,9 +112,9 @@ function addTask(){
 function addItem(){
     let count;
     if (arrayOfTasks.length===0){
-        count=0;
+        count=1;
     }else{
-        count=arrayOfTasks[0].id;
+        count = Math.max(...arrayOfTasks.map(task => task.id)) + 1;
     }
     let name=document.getElementById("taskName");
     let priority=document.getElementById("taskPriority");
@@ -123,7 +124,7 @@ function addItem(){
     let status="not completed";
     arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
     newTask={
-        id:count+1,
+        id:count,
         name:name.value,
         priority:priority.value,
         time:time.value,
@@ -149,7 +150,6 @@ function display(){
     taskList.innerHTML=" ";
     arrayOfTasks.forEach(function (task){
         const tableRow=document.createElement("tr");
-        const coloumnForButtons=document.createElement("td");
         switch (task.priority) {  
             case "low":
                 tableRow.style.backgroundColor = "rgb(222, 229, 222)";
@@ -166,6 +166,7 @@ function display(){
             default:
                 tableRow.style.backgroundColor = "white";
         }
+        const coloumnForButtons=document.createElement("td");
         const tableDataId=document.createElement("td");
         const tableDataName=document.createElement("td");
         tableDataName.id="taskList";
