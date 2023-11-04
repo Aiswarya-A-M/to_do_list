@@ -1,4 +1,3 @@
-
 function clearTask(){
     clearPopup.style.display="block";
 }
@@ -56,9 +55,33 @@ function deleteTask(count){
         document.getElementById("deletePopup").style.display="none";
     }) 
 }
+
+
+function check(count){
+       let element=document.getElementById("toggle"+count);
+       arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
+       console.log(count);
+       const object = arrayOfTasks.find(obj => obj.id === count);
+       if (element.style.textDecoration!="line-through"){
+            element.style.textDecoration="line-through";
+            console.log("hi")
+            object.status="Completed";
+       }else{
+            element.style.textDecoration="none";
+            object.status="not completed";
+       }
+       localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
+}
+
+function cancelItem(){
+    document.getElementById("addForm").style.display="none"; 
+    document.getElementById("clearPopup").style.display="none";
+}
+
 function addTask(){
     document.getElementById("addForm").style.display="block";
 }
+
 function addItem(){
     let count;
     if (arrayOfTasks.length===0){
@@ -97,22 +120,7 @@ function addItem(){
     display();
     cancelItem();
 }
-function cancelItem(){
-    document.getElementById("addForm").style.display="none"; 
-    document.getElementById("clearPopup").style.display="none";
-}
 
-
-function check(count){
-       let element=document.getElementById("toggle"+count);
-       console.log(count);
-       if (element.style.textDecoration!="line-through"){
-        element.style.textDecoration="line-through";
-        console.log("hi")
-       }else{
-        element.style.textDecoration="none";
-       }
-}
 function display(){
     var taskList=document.getElementById("tableBody")
     arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
