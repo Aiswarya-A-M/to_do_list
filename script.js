@@ -17,9 +17,14 @@ function view(count){
     const popup = document.querySelector(`.viewPopUp`)
     popup.style.display="block";
     const object = arrayOfTasks.find(obj => obj.id === count);
-    document.getElementById("viewTask").value=object.name;
-    document.getElementById("viewId").value=object.id;
-    cancelViewPopup.addEventListener("click",function(){
+    document.getElementById("viewTask").textContent=object.name;
+    document.getElementById("viewPriority").textContent=object.priority;
+    document.getElementById("viewDate").textContent=object.date;
+    document.getElementById("viewTime").textContent=object.time;
+    document.getElementById("viewCreateDate").textContent=object.createDate;
+    document.getElementById("viewStatus").textContent=object.status;
+    document.getElementById("viewId").textContent=object.id;
+    cancelView.addEventListener("click",function(){
         popup.style.display="none";
     });
 }
@@ -118,7 +123,7 @@ function addItem(){
     let time=document.getElementById("taskTime");
     let date=document.getElementById("taskDate");
     let createDate=new Date;
-    let status="not comleted";
+    let status="not completed";
     arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
     console.log("time...",time)
    

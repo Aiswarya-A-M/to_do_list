@@ -64,11 +64,40 @@
                 <button id="cancelEdit" type="button"  class="submit" > Cancel </button>  
             </form>
             <div class="viewPopUp" id="viewPopUp">
-                <label> Task Name</label>
-                <input id="viewTask" type="text" readonly><br><br><br>
-                <label> Task Id</label>
-                <input id="viewId" type="text" readonly><br>
-                <button class="cancel" id="cancelViewPopup">OK</button>
+                <table>
+                    <tr>
+                        <th>Id</th>
+                        <td id="viewId"></td>
+                    </tr>
+                    <tr>
+                      <th>Task Name</th>
+                      <td id="viewTask"></td>   
+                    </tr>
+                    <tr>
+                      <th>Task Priority</th>
+                      <td id="viewPriority"></td>
+                      
+                    </tr>
+                    <tr>
+                      <th>Scheduled Date</th>
+                      <td id="viewDate"></td>
+                      
+                    </tr>
+                    <tr>
+                        <th>Scheduled Time</th>
+                        <td id="viewTime"></td>
+                        
+                      </tr>
+                      <tr>
+                        <th>Created Date</th>
+                        <td id="viewCreateDate"></td>
+                      </tr>
+                      <tr>
+                        <th>Status</th>
+                        <td id="viewStatus"></td>
+                    </tr>
+                  </table>
+                  <button id="cancelView" type="button"  class="submit" > Ok </button> 
             </div>
             <div id="deletePopup">
                 <p class="confirmMessage">Do you want to delete?</p>
