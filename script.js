@@ -10,7 +10,7 @@ function clearConfirmation(){
     setTimeout(function() {
         clearSuccess.style.display = "none";
         clearPopup.style.display="none";
-    }, 500);
+    }, 2000);
 }
 function view(count){
     console.log(count);
@@ -36,7 +36,7 @@ function edit(count){
                 edit.style.display="none";
             });
         }
-        
+        localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
     });
     
     cancelEdit.addEventListener("click",function(){
@@ -44,18 +44,24 @@ function edit(count){
     })
 }
 function deleteTask(count){
-    document.getElementById("deletePopup").style.display="block";
+    console.log(count);
+    deletePopup.style.display="block";
+    arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
+    console.log(arrayOfTasks);
     deleteConfirmation.addEventListener("click",function(){
+        console.log("hi");
         const index = arrayOfTasks.findIndex(obj => obj.id === count);
+        console.log(index);
         arrayOfTasks.splice(index,1);
+        localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
+        deleteSuccess.style.display="block";
         display();
-        document.getElementById("deletePopup").style.display="none";
-    });
-    cancelDelete.addEventListener("click",function(){
-        document.getElementById("deletePopup").style.display="none";
-    }) 
+    });  
+    setTimeout(function() {
+        deleteSuccess.style.display = "none";
+        deletePopup.style.display="none";
+    }, 2000);
 }
-
 
 function check(count){
        let element=document.getElementById("toggle"+count);
@@ -72,10 +78,10 @@ function check(count){
        }
        localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
 }
-
 function cancelItem(){
-    document.getElementById("addForm").style.display="none"; 
-    document.getElementById("clearPopup").style.display="none";
+    addForm.style.display="none"; 
+    clearPopup.style.display="none";
+    deletePopup.style.display="none";
 }
 
 function addTask(){

@@ -141,7 +141,20 @@
     display: none;
     
 }
-.successMsg{
+#deleteSuccess
+{
+    align-items: center;
+    background-color: rgb(255, 246, 246);
+    width: 40%;
+    margin-left: 30%;
+    height: 30%;
+    padding: 2%;
+    position: absolute; 
+    z-index: 3; 
+    text-align: center;
+    display: none;
+}
+.successMessage{
     text-align: center;
     align-items: center;
 }
@@ -177,7 +190,7 @@ th, td {
     align-items: center;
     width: 40%;
     margin-left: 30%;
-    height: 50%;
+    height: 25%;
     padding: 2%;
     position: absolute; 
     z-index: 3; 
@@ -200,10 +213,10 @@ th, td {
     background-color: antiquewhite;
     text-align: center;
 }
-#clearPara{
+#confirmMessage{
     font-size: 25px;
-
 }
+
 #cancelClearId{
     height:30px;
     width:60px;
@@ -211,6 +224,18 @@ th, td {
     background-color: antiquewhite;
 }
 #clearConfirmation{
+    height:30px;
+    width:60px;
+    margin-left:28px ;
+    background-color: antiquewhite;
+}
+#cancelDelete{
+    height:30px;
+    width:60px;
+    margin-left:28px ;
+    background-color: antiquewhite;
+}
+#deleteConfirmation{
     height:30px;
     width:60px;
     margin-left:28px ;
