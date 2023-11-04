@@ -14,25 +14,24 @@
         </div>
         <div class="lower">
             <div class="topLayer"> 
-            <!-- <h2 class="tasks">Tasks</h2>           -->
-            <table class="displayTable" id="displayTable">
-                <tr class="tableHead">
-                    <th id="check"></th>
-                    <th id="tableId">Id</th>
-                    <th id="tableTask"> Task List</th>
-                    <th id="coloumnForButtons"></th>
-                </tr> 
-                <tr id="tableBody">
-                    <td class="tableCheck"></td>
-                </tr>
-            </table>
-            <button id="addTask" onclick="addTask()">+</button> 
-            <button id="clearTask" onclick="clearTask()">Clear</button> 
+                <table class="displayTable" id="displayTable">
+                    <tr class="tableHead">
+                        <th id="check"></th>
+                        <th id="tableId">Id</th>
+                        <th id="tableTask"> Task List</th>
+                        <th id="coloumnForButtons"></th>
+                    </tr> 
+                    <tr id="tableBody">
+                        <td class="tableCheck"></td>
+                    </tr>
+                </table>
+                <button id="addTask" onclick="addTask()">+</button> 
+                <button id="clearTask" onclick="clearTask()">Clear</button> 
             </div>
             <form id="addForm">
                 <h2>Add Task</h2>
                 <label>Task Name:</label><br>
-                <input id="taskName" type="text"  required><br>    
+                <input id="taskName" type="text" required><br>    
                 <label>Priority:</label><br>
                 <select id="taskPriority" name="priority">
                     <option value="low">low</option>
@@ -41,16 +40,16 @@
                     <option value="severe">severe</option>
                 </select><br>
                 <label for="date">Date</label><br>
-                <input  type="date" id="taskDate" name="date" required><br><br>
+                <input type="date" id="taskDate" name="date" required><br><br>
                 <label for="date">Time</label><br>
-                <input  type="time" id="taskTime" name="time" required><br><br>            
+                <input type="time" id="taskTime" name="time" required><br><br>            
                 <button id="addNewTask" type="button"  class="submit" onclick="addItem()"> Add </button>
                 <button id="cancelAddForm" type="button"  class="submit" onclick="cancelItem()"> Cancel </button>  
             </form>
             <form id="editForm">
                 <h2>Edit Task</h2>
                 <label>Task Name:</label><br>
-                <input id="editName" type="text"  required><br>
+                <input id="editName" type="text" required><br>
                 <label>Priority:</label><br>
                 <select id="editPriority" name="priority">
                     <option value="low">low</option>
@@ -59,11 +58,11 @@
                     <option value="severe">severe</option>
                 </select><br>
                 <label for="date">Date</label><br>
-                <input  type="date" id="editDate" name="date" required><br><br>
+                <input type="date" id="editDate" name="date" required><br><br>
                 <label for="date">Time</label><br>
                 <input  type="time" id="editTime" name="time" required><br><br>       
-                <button id="editTask" type="button"  class="submit" >   Update </button>
-                <button id="cancelEdit" type="button"  class="submit" onclick="cancelItem()"> Cancel </button>  
+                <button id="editTask" type="button" class="submit" > Update </button>
+                <button id="cancelEdit" type="button" class="submit" onclick="cancelItem()"> Cancel </button>  
             </form>
             <div class="viewPopUp" id="viewPopUp">
                 <table>
@@ -78,37 +77,34 @@
                     <tr>
                       <th>Task Priority</th>
                       <td id="viewPriority"></td>
-                      
                     </tr>
                     <tr>
                       <th>Scheduled Date</th>
-                      <td id="viewDate"></td>
-                      
+                      <td id="viewDate"></td>    
                     </tr>
                     <tr>
                         <th>Scheduled Time</th>
-                        <td id="viewTime"></td>
-                        
-                      </tr>
-                      <tr>
+                        <td id="viewTime"></td> 
+                    </tr>
+                    <tr>
                         <th>Created Date</th>
                         <td id="viewCreateDate"></td>
-                      </tr>
-                      <tr>
+                    </tr>
+                    <tr>
                         <th>Status</th>
                         <td id="viewStatus"></td>
                     </tr>
-                  </table>
-                  <button id="cancelView" type="button"  class="submit" > Ok </button> 
+                </table>
+                <button id="cancelView" type="button" class="submit"> Ok </button> 
             </div>
             <div id="deletePopup">
                 <p class="confirmMessage">Do you want to delete?</p>
-                <button id="deleteConfirmation" type="button" class="submit"   >Delete</button>
+                <button id="deleteConfirmation" type="button" class="submit">Delete</button>
                 <button id="cancelDelete" type="button" class="submit" onclick="cancelItem()">Cancel</button>
             </div>
             <div id="clearPopup">
                 <p class="confirmMessage">Do you want to clear all?</p>
-                <button id="clearConfirmation" type="button" class="submit" onclick="clearConfirmation()"  >Clear</button>
+                <button id="clearConfirmation" type="button" class="submit" onclick="clearConfirmation()">Clear</button>
                 <button id="cancelClearId" type="button" class="submit" onclick="cancelItem()">Cancel</button>
             </div>
             <div class="success" id="addSuccess">
@@ -123,7 +119,6 @@
             <div class="success" id="editSuccess">
                 <h1 class="successMsg">You edit task successfully!</h1>
             </div>
-
         </div>
     </div>
 </body>
