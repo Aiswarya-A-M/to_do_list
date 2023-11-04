@@ -35,7 +35,7 @@ function edit(count){
     edit.style.display="block";
     const object = arrayOfTasks.find(obj => obj.id === count);
     document.getElementById("editName").value=object.name;
-    document.getElementById("editPriority").value=object.Priority;
+    document.getElementById("editPriority").value=object.priority;
     document.getElementById("editDate").value=object.date;
     document.getElementById("editTime").value=object.time;
     editTask.addEventListener("click", function () {
@@ -46,10 +46,13 @@ function edit(count){
     const updatedTasks = arrayOfTasks.map(task => {
             if (task.id === count) {
                 return {
+                    id:task.id,
                     name: updatedName,
-                    Priority: updatedPriority,
+                    priority: updatedPriority,
                     date: updatedDate,
                     time: updatedTime,
+                    createDate:task.createDate,
+                    status:task.status        
                 };
             }
             return task;
@@ -146,15 +149,32 @@ function addItem(){
     }, 2000);
     display();
     cancelItem();
+    addForm.reset();
 }
-
 function display(){
     var taskList=document.getElementById("tableBody")
     arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
     taskList.innerHTML=" ";
     arrayOfTasks.forEach(function (task){
+        /*console.log(task.priority)
+        switch (task.priority) {  
+            case "low":
+                taskList.style.backgroundColor = "rgb(222, 229, 222)";
+                break;
+            case "medium":
+                taskList.style.backgroundColor = "rgb(68, 200, 68)";
+                break;
+            case "high":
+                taskList.style.backgroundColor = "rgb(229, 92, 28)";
+                break;
+            case "severe":
+                taskList.style.backgroundColor = "rgb(221, 33, 67)";
+                break;
+            default:
+                taskList.style.backgroundColor = "white";
+        }*/
         const tableRow=document.createElement("tr");
-        //const tableDataId=document.createElement("td");
+        const tableDataId=document.createElement("td");
         const tableDataName=document.createElement("td");
         tableDataName.id="taskList";
         tableDataName.id="toggle"+`${task.id}`;
@@ -173,14 +193,14 @@ function display(){
         viewButton.textContent="View";
         editButton.textContent="Edit";
         deleteButton.textContent="Delete";
-        //tableDataId.innerHTML=(task.id);
+        tableDataId.innerHTML=(task.id);
         tableDataName.innerHTML=(task.name);
         checkDiv.appendChild(checkBox);
         coloumnForButtons.appendChild(viewButton);
         coloumnForButtons.appendChild(editButton);
         coloumnForButtons.appendChild(deleteButton);
         tableRow.appendChild(checkDiv);
-        //tableRow.appendChild(tableDataId);
+        tableRow.appendChild(tableDataId);
         tableRow.appendChild(tableDataName);
         tableRow.appendChild(coloumnForButtons);
         taskList.appendChild(tableRow);  
