@@ -73,13 +73,12 @@ function deleteTask(count){
     deletePopup.style.display="block";
     arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
     deleteConfirmation.addEventListener("click",function(){
-        const index = arrayOfTasks.findIndex(obj => obj.id === count);
+    const index = arrayOfTasks.findIndex(obj => obj.id === count);
         if (index !== -1){
             arrayOfTasks.splice(index,1);
             localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
             deleteSuccess.style.display="block";
             display();
-
         }
     });  
     setTimeout(function() {
@@ -116,9 +115,9 @@ function addTask(){
 function addItem(){
     let count;
     if (arrayOfTasks.length===0){
-        count=0;
+        count=1;
     }else{
-        count = Math.max(...arrayOfTasks.map(task => task.id));
+        count = Math.max(...arrayOfTasks.map(task => task.id)) + 1;
     }
     let name=document.getElementById("taskName");
     let priority=document.getElementById("taskPriority");
@@ -128,7 +127,7 @@ function addItem(){
     let status="not completed";
     arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
     newTask={
-        id:count+1,
+        id:count,
         name:name.value,
         priority:priority.value,
         scheduledTime:scheduledTime.value,
