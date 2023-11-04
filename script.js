@@ -156,24 +156,24 @@ function display(){
     arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
     taskList.innerHTML=" ";
     arrayOfTasks.forEach(function (task){
-        /*console.log(task.priority)
+        const tableRow=document.createElement("tr");
+        console.log(task.priority);
         switch (task.priority) {  
             case "low":
-                taskList.style.backgroundColor = "rgb(222, 229, 222)";
+                tableRow.style.backgroundColor = "rgb(222, 229, 222)";
                 break;
             case "medium":
-                taskList.style.backgroundColor = "rgb(68, 200, 68)";
+                tableRow.style.backgroundColor = "rgb(68, 200, 68)";
                 break;
             case "high":
-                taskList.style.backgroundColor = "rgb(229, 92, 28)";
+                tableRow.style.backgroundColor = "rgb(229, 92, 28)";
                 break;
             case "severe":
-                taskList.style.backgroundColor = "rgb(221, 33, 67)";
+                tableRow.style.backgroundColor = "rgb(221, 33, 67)";
                 break;
             default:
-                taskList.style.backgroundColor = "white";
-        }*/
-        const tableRow=document.createElement("tr");
+                tableRow.style.backgroundColor = "white";
+        }
         const tableDataId=document.createElement("td");
         const tableDataName=document.createElement("td");
         tableDataName.id="taskList";
