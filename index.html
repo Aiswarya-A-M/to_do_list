@@ -45,8 +45,8 @@
                 <input type="date" id="taskDate" name="date" required><br><br>
                 <label for="date">Time</label><br>
                 <input type="time" id="taskTime" name="time" required><br><br>            
-                <button id="addNewTask" type="button"  class="submit" onclick="addItem()"> Add </button>
-                <button id="cancelAddForm" type="button"  class="submit" onclick="cancelItem()"> Cancel </button>  
+                <button id="addNewTask" type="button" onclick="addItem()"> Add </button>
+                <button id="cancelAddForm" type="button" onclick="cancelItem()"> Cancel </button>  
             </form>
             <form id="editForm">
                 <h2>Edit Task</h2>
@@ -63,8 +63,8 @@
                 <input type="date" id="editDate" name="date" required><br><br>
                 <label for="date">Time</label><br>
                 <input  type="time" id="editTime" name="time" required><br><br>       
-                <button id="editTask" type="button" class="submit" > Update </button>
-                <button id="cancelEdit" type="button" class="submit" onclick="cancelItem()"> Cancel </button>  
+                <button id="editTask" type="button"> Update </button>
+                <button id="cancelEdit" type="button" onclick="cancelItem()"> Cancel </button>  
             </form>
             <div id="viewPopUp">
                 <table id="viewTable">
@@ -97,17 +97,17 @@
                         <td id="viewStatus"></td>
                     </tr>
                 </table>
-                <button id="cancelView" type="button" class="submit"> Ok </button> 
+                <button id="cancelView" type="button"> Ok </button> 
             </div>
             <div id="deletePopup">
                 <p class="confirmMessage">Do you want to delete?</p>
-                <button id="deleteConfirmation" type="button" class="submit">Delete</button>
-                <button id="cancelDelete" type="button" class="submit" onclick="cancelItem()">Cancel</button>
+                <button id="deleteConfirmation" type="button">Delete</button>
+                <button id="cancelDelete" type="button" onclick="cancelItem()">Cancel</button>
             </div>
             <div id="clearPopup">
                 <p class="confirmMessage">Do you want to clear all?</p>
-                <button id="clearConfirmation" type="button" class="submit" onclick="clearConfirmation()">Clear</button>
-                <button id="cancelClearId" type="button" class="submit" onclick="cancelItem()">Cancel</button>
+                <button id="clearConfirmation" type="button" onclick="clearConfirmation()">Clear</button>
+                <button id="cancelClearId" type="button" onclick="cancelItem()">Cancel</button>
             </div>
             <div class="success" id="addSuccess">
                 <h1 class="successMsg">You added task successfully!</h1>
