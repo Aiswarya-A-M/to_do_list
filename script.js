@@ -3,9 +3,9 @@ function clearTask(){
 }
 
 function clearConfirmation(){
-    arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
-    arrayOfTasks=[];
-    localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
+    tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks=[];
+    localStorage.setItem("tasks", JSON.stringify(tasks));
     display();
     clearSuccess.style.display="block";
     setTimeout(function() {
@@ -15,9 +15,9 @@ function clearConfirmation(){
 }
 
 function view(count){
-    const popup = document.querySelector(`.viewPopUp`)
+    const popup = document.querySelector(`#viewPopUp`)
     popup.style.display="block";
-    const object = arrayOfTasks.find(obj => obj.id === count);
+    const object = tasks.find(obj => obj.id === count);
     document.getElementById("viewTask").textContent=object.name;
     document.getElementById("viewPriority").textContent=object.priority;
     document.getElementById("viewTime").textContent=object.scheduledTime;
@@ -35,17 +35,17 @@ function view(count){
 function edit(count){
     const edit = document.querySelector(`#editForm`)
     edit.style.display="block";
-    const object = arrayOfTasks.find(obj => obj.id === count);
-    document.getElementById("editName").value=object.name;
-    document.getElementById("editPriority").value=object.priority;
-    document.getElementById("editDate").value=object.scheduledDate;
-    document.getElementById("editTime").value=object.scheduledTime;
+    const taskToEdit = tasks.find(task => task.id === count);
+    document.getElementById("editName").value=taskToEdit.name;
+    document.getElementById("editPriority").value=taskToEdit.priority;
+    document.getElementById("editDate").value=taskToEdit.scheduledDate;
+    document.getElementById("editTime").value=taskToEdit.scheduledTime;
     editTask.addEventListener("click", function () {
     const updatedName = document.getElementById("editName").value;
     const updatedPriority = document.getElementById("editPriority").value;
     const updatedDate = document.getElementById("editDate").value;
     const updatedTime = document.getElementById("editTime").value;
-    const updatedTasks = arrayOfTasks.map(task => {
+    const updatedTasks = tasks.map(task => {
         if (task.id === count) {
             return {
                 id:task.id,
@@ -59,7 +59,7 @@ function edit(count){
         }
         return task;
     });
-    localStorage.setItem("arrayOfTasks", JSON.stringify(updatedTasks));
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     display();
     edit.style.display="none";
     editSuccess.style.display = "block";
@@ -71,12 +71,12 @@ function edit(count){
 
 function deleteTask(count){
     deletePopup.style.display="block";
-    arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
+    tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     deleteConfirmation.addEventListener("click",function(){
-    const index = arrayOfTasks.findIndex(obj => obj.id === count);
+    const index = tasks.findIndex(obj => obj.id === count);
         if (index !== -1){
-            arrayOfTasks.splice(index,1);
-            localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
+            tasks.splice(index,1);
+            localStorage.setItem("tasks", JSON.stringify(tasks));
             deleteSuccess.style.display="block";
             display();
         }
@@ -89,8 +89,8 @@ function deleteTask(count){
 
 function check(count){
     let element=document.getElementById("toggle"+count);
-    arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
-    const object = arrayOfTasks.find(obj => obj.id === count);
+    tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    const object = tasks.find(obj => obj.id === count);
     if(element.style.textDecoration!="line-through"){
         element.style.textDecoration="line-through";
         object.status="Completed";
@@ -98,7 +98,7 @@ function check(count){
         element.style.textDecoration="none";
         object.status="not completed";
     }
-    localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 function cancelItem(){
@@ -114,10 +114,10 @@ function addTask(){
 
 function addItem(){
     let count;
-    if (arrayOfTasks.length===0){
+    if (tasks.length===0){
         count=1;
     }else{
-        count = Math.max(...arrayOfTasks.map(task => task.id)) + 1;
+        count = Math.max(...tasks.map(task => task.id)) + 1;
     }
     let name=document.getElementById("taskName");
     let priority=document.getElementById("taskPriority");
@@ -125,7 +125,7 @@ function addItem(){
     let scheduledDate=document.getElementById("taskDate").value;
     let createDate=new Date();
     let status="not completed";
-    arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
+    tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     newTask={
         id:count,
         name:name.value,
@@ -135,9 +135,9 @@ function addItem(){
         createDate:createDate,
         status:status
     }
-    arrayOfTasks.push(newTask);
-    arrayOfTasks.sort((a, b) => new Date(b.createDate) - new Date(a.createDate));
-    localStorage.setItem("arrayOfTasks", JSON.stringify(arrayOfTasks));
+    tasks.push(newTask);
+    tasks.sort((a, b) => new Date(b.createDate) - new Date(a.createDate));
+    localStorage.setItem("tasks", JSON.stringify(tasks));
     addSuccess.style.display = "block";
     setTimeout(function() {
         addSuccess.style.display = "none";
@@ -149,9 +149,9 @@ function addItem(){
 
 function display(){
     var taskList=document.getElementById("tableBody")
-    arrayOfTasks = JSON.parse(localStorage.getItem("arrayOfTasks")) || [];
+    tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     taskList.innerHTML=" ";
-    arrayOfTasks.forEach(function (task){
+    tasks.forEach(function (task){
         const tableRow=document.createElement("tr");
         switch (task.priority) {  
             case "low":
