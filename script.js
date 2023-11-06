@@ -153,7 +153,7 @@ function display(){
     taskList.innerHTML=" ";
     tasks.forEach(function (task){
         const tableRow=document.createElement("tr");
-        switch (task.priority) {  
+        switch (task.priority) {
             case "low":
                 tableRow.style.backgroundColor = "rgb(222, 229, 222)";
                 break;
