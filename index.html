@@ -10,27 +10,28 @@
 </head>
 <body>
     <div class="mainbody">
-        <div class="upper">
+        <div class="upper bodyStyle">
             <img id="imgOfLogo" src="assets/logo.png" alt="Your Logo" />
             <h1 id="heading">To Do</h1>
         </div>
-        <div class="lower">
+        <div class="lower bodyStyle">
             <div class="topLayer"> 
-                <table id="displayTable">
+                <table id="displayTable" class="styleTable">
                     <tr class="tableHead">
                         <th id="check"></th>
                         <th id="tableId">Id</th>
                         <th id="tableTask">Tasks</th>
                         <th id="coloumnForButtons"></th>
                     </tr> 
-                    <tr id="tableBody">
+                    <tr id="tableBody" class="styleTable">
                         <td class="tableCheck"></td>
                     </tr>
                 </table>
-                <button id="addTask" onclick="addTask()">Add</button> 
-                <button id="clearTask" onclick="clearTask()">Clear</button> 
+                <button id="addTask" class="addClearBtn addButtonColor" onclick="addTask()">Add</button> 
+                <button id="clearTask" class="addClearBtn cancelButtonColor" onclick="clearTask()">Clear</button> 
             </div>
-            <form id="addForm">
+
+            <form id="addForm" class="addForm">
                 <h2>Add Task</h2>
                 <label>Task Name:</label><br>
                 <input id="taskName" type="text" required><br>
@@ -45,10 +46,11 @@
                 <input type="date" id="taskDate" name="date" required><br><br>
                 <label for="date">Time</label><br>
                 <input type="time" id="taskTime" name="time" required><br><br>
-                <button id="addNewTask" type="button" onclick="addItem()"> Add </button>
-                <button id="cancelAddForm" type="button" onclick="cancelItem()"> Cancel </button>
+                <button id="addNewTask" class="addButtonColor" class="cancelForm" type="button" onclick="addItem()"> Add </button>
+                <button id="cancelAddForm" class="cancelButtonColor" class="cancelForm" type="button" onclick="cancelItem()"> Cancel </button>
             </form>
-            <form id="editForm">
+
+            <form id="editForm" class="addForm">
                 <h2>Edit Task</h2>
                 <label>Task Name:</label><br>
                 <input id="editName" type="text" required><br>
@@ -63,10 +65,11 @@
                 <input type="date" id="editDate" name="date" required><br><br>
                 <label for="date">Time</label><br>
                 <input type="time" id="editTime" name="time" required><br><br>
-                <button id="editTask" type="button"> Update </button>
-                <button id="cancelEdit" type="button" onclick="cancelItem()"> Cancel </button>
+                <button id="editTask" class="addButtonColor" class="cancelForm" type="button"> Update </button>
+                <button id="cancelEdit" class="cancelButtonColor" class="cancelForm" type="button" onclick="cancelItem()"> Cancel </button>
             </form>
-            <div id="viewPopUp">
+
+            <div id="viewPopUp" class="deleteclearPopup viewPopUp">
                 <table id="viewTable">
                     <tr>
                         <th>Id</th>
@@ -97,29 +100,32 @@
                         <td id="viewStatus"></td>
                     </tr>
                 </table>
-                <button id="cancelView" type="button"> Ok </button> 
+                <button id="cancelView" class="addButtonColor confirmation" type="button"> Ok </button> 
             </div>
-            <div id="deletePopup">
+
+            <div id="deletePopup" class="popup deleteclearPopup">
                 <p class="confirmMessage">Do you want to delete?</p>
-                <button id="deleteConfirmation" type="button">Delete</button>
-                <button id="cancelDelete" type="button" onclick="cancelItem()">Cancel</button>
+                <button id="deleteConfirmation" class="confirmation addButtonColor" type="button">Delete</button>
+                <button id="cancelDelete" class="confirmation cancelButtonColor" type="button" onclick="cancelItem()">Cancel</button>
             </div>
-            <div id="clearPopup">
+
+            <div id="clearPopup" class="popup deleteclearPopup">
                 <p class="confirmMessage">Do you want to clear all?</p>
-                <button id="clearConfirmation" type="button" onclick="clearConfirmation()">Clear</button>
-                <button id="cancelClearId" type="button" onclick="cancelItem()">Cancel</button>
+                <button id="clearConfirmation" class="confirmation addButtonColor" type="button" onclick="clearConfirmation()">Clear</button>
+                <button id="cancelClearId" class="confirmation cancelButtonColor" type="button" onclick="cancelItem()">Cancel</button>
             </div>
-            <div class="success" id="addSuccess">
-                <h1 class="successMsg">You added task successfully!</h1>
+
+            <div class="success successMessage" id="addSuccess">
+                <h1 class="successMessage">You added task successfully!</h1>
             </div>
             <div class="success" id="clearSuccess">
-                <h1 class="successMsg">You deleted all tasks successfully!</h1>
+                <h1 class="successMessage">You deleted all tasks successfully!</h1>
             </div>
-            <div class="success" id="deleteSuccess">
-                <h1 class="successMsg">You delete task successfully!</h1>
+            <div class="success successMessage" id="deleteSuccess">
+                <h1 class="successMessage">You delete task successfully!</h1>
             </div>
-            <div class="success" id="editSuccess">
-                <h1 class="successMsg">You edit task successfully!</h1>
+            <div class="success successMessage" id="editSuccess">
+                <h1 class="successMessage">You edit task successfully!</h1>
             </div>
         </div>
     </div>

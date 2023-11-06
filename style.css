@@ -5,146 +5,113 @@
     position: relative;
     z-index: 1;
 }
+
 .upper{
-    width:97.5%;
+    width: 97.5%;
     height: 20%;
     margin-top: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    position: absolute;
     z-index: 2;
-    background-color: rgb(186, 176, 242);
 }
+
 .lower{
-    width:97.5%;
+    width: 97.5%;
     height: 75%;
     margin-top: 180px;
+    z-index: 1;   
+}
+
+.bodyStyle{
+    background-color: rgb(186, 176, 242);
+    position: absolute;
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 20px;
-    z-index: 1;
-    position: absolute;
-    background-color: rgb(186, 176, 242);
-    
 }
+
 #viewTable{
-    text-align:left;
+    text-align: left;
 }
+
 #heading{
     float: left;
-    font-family:'cursive';
+    font-family: 'cursive';
     font-weight: bolder;
     font-style: oblique;
-    font-size:500%;
+    font-size: 500%;
     text-align: center;
     text-shadow: 6px 6px 6px #440546;
     margin-top: 5px;
     color: rgb(14, 13, 13);
 }
+
 .topLayer{
     display: flex;
 }
-#displayTable{
-        width:600px;
-        margin-left: 350px;
-        font-size: 30px;
-        z-index: 2;
-        position: absolute;
-        margin-top: 25px;
-        float: left;
-        text-align: center;
 
-} 
-#tableBody{
-    text-align:center;
-    width:600px;
+#imgOfLogo{
+    align-items: center;
+    width: 100px;
+    margin-top: 10px;
+    float: left;
+    margin-left: 450px;
+}
+ 
+.styleTable{
+    width: 600px;
+    text-align: center;
     font-size: 30px;
     z-index: 2;
     position: absolute;
     margin-top: 25px;
-    margin-left: 17px;
-    float: left; 
-    border-bottom:1px solid antiquewhite;
-} 
-
- #addTask{ 
-    margin-top:15px;
-    height:62px;
     float: left;
-    width:62px;
-    border-color:black;
-    background-color: green;
-    color:white;
-    font-weight:bold;
-    font-size: 150%;
-    display: flex;
-    align-items:center ;
-    justify-content: center;
-    margin-left:1000px;
-   
-} 
-#clearTask{
-    margin-top:15px;
-    color:white;
-    font-weight:bold;
-    height:62px;
-    width:62px;
-    border-color:black;
-    background-color: rgb(222, 18, 18);
-    font-size: 150%;
-    display: flex;
-    align-items:center ;
-    justify-content: center;
-    margin-left:100px
 }
-#addForm{
-    height:300px;
-    width:300px;
-    margin-left:38% ;
+
+#displayTable{
+    margin-left: 350px;  
+}
+
+#tableBody{
+    margin-left: 17px;
+    border-bottom: 1px solid antiquewhite;
+}
+
+ .addClearBtn{ 
+    margin-top: 15px;
+    color: white;
+    height: 62px;
+    width: 62px;
+    border-color: black;
+    font-weight: bold;
+    font-size: 150%;
+    align-items: center ;
+    justify-content: center;
+    display: flex;
+ }
+
+#addTask{
+    float: left;
+    margin-left: 1000px;
+}
+
+#clearTask{
+    margin-left: 100px;
+}
+
+.addForm{
+    height: 300px;
+    width: 300px;
+    margin-left: 38% ;
     text-align: center;
     font-size: 110%;
     font-family: Arial, Helvetica, sans-serif;
     padding: 1%;
     z-index: 3;
-    display:none;
+    display: none;
     background-color: aqua;
     position: absolute; 
 } 
-#viewPopUp{
-    align-items: left;
-    width: 40%;
-    margin-left: 30%;
-    height: 60%;
-    padding: 2%;
-    position: absolute; 
-    z-index: 3; 
-    text-align: left;
-    display: none;
-    background-color: antiquewhite;
-    text-align: center;
-}
-.success{
-    align-items: center;
-    background-color: rgb(255, 246, 246);
-    width: 40%;
-    margin-left: 30%;
-    height: 30%;
-    padding: 2%;
-    position: absolute; 
-    z-index: 3; 
-    text-align: center;
-    display: none;
-}
-.successMessage{
-    text-align: center;
-    align-items: center;
-}
-.checkTable{
-    margin-left: 0;
-}
-th, td {  
-    
+
+th, td {
     width:600px;
     margin-left: 25px;
     font-size: 30px;
@@ -152,116 +119,73 @@ th, td {
     position: relative;
     margin-top: 25px;
 }
-#editForm{
-    height:300px;
-    width:300px;
-    margin-left:38% ;
-    text-align: center;
-    font-size: 110%;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 1%;
-    z-index: 3;
-    display:none;
-    background-color: aqua;
-    position: absolute; 
-}
+
 #cancelViewPopup{
     margin-top: 10%;
 }
-#deletePopup{
-    align-items: center;
-    width: 40%;
-    margin-left: 30%;
-    height: 25%;
-    padding: 2%;
-    position: absolute; 
-    z-index: 3; 
-    text-align: center;
-    display: none;
-    background-color: antiquewhite;
-    text-align: center;
-}
-#clearPopup{
 
+.popup{
     align-items: center;
+    height: 25%;
+    text-align: center;
+    background-color: antiquewhite;  
+}
+
+.deleteclearPopup{
     width: 40%;
     margin-left: 30%;
-    height: 25%;
     padding: 2%;
-    position: absolute; 
-    z-index: 3; 
-    text-align: center;
+    position: absolute;
+    z-index: 3;
     display: none;
+}
+
+#viewPopUp{
+    align-items: left;
+    height: 60%;
+    text-align: left;
     background-color: antiquewhite;
     text-align: center;
 }
+
 #confirmMessage{
     font-size: 25px;
 }
 
-#cancelClearId{
-    height:30px;
-    width:60px;
-    margin-left:28px ;
-    background-color: red;
-    color:white;
-    font-weight:bold;
-    font-weight:bold;
+.confirmation{
+    height: 30px;
+    width: 60px;
+    margin-left: 28px ;
+    color: white;
+    font-weight: bold;
 }
-#clearConfirmation{
-    height:30px;
-    width:60px;
-    margin-left:28px ;
+
+
+.cancelForm{
+    font-weight:bold;
+    color:white;
+}
+
+.cancelButtonColor{
+    background-color: red; 
+}
+
+.addButtonColor{
     background-color: green;
 }
-#cancelDelete{
-    height:30px;
-    width:60px;
-    margin-left:28px ;
-    background-color: red;
-    color:white;
-    font-weight:bold;
+
+.success{
+    background-color: rgb(255, 246, 246);
+    width: 40%;
+    margin-left: 30%;
+    height: 30%;
+    padding: 2%;
+    position: absolute; 
+    z-index: 3; 
+    display: none;
 }
-#cancelView{
-    height:30px;
-    width:60px;
-    margin-left:28px ;
-    background-color: green;
-    color:white;
-    font-weight:bold;
-}
-#deleteConfirmation{
-    height:30px;
-    width:60px;
-    margin-left:28px ;
-    background-color: green;
-    color:white;
-    font-weight:bold;
-}
-#imgOfLogo{
-   align-items: center;
-   width: 100px;
-   margin-top: 10px;
-   float: left;
-   margin-left: 450px;
-}
-#editTask{
-    background-color: green;
-    color:white;
-    font-weight:bold;
-}
-#cancelEdit{
-    background-color: red;
-    color:white;
-    font-weight:bold;
-}
-#addNewTask{
-    background-color: green;
-    color:white;
-    font-weight:bold;
-}
-#cancelAddForm{
-    background-color: red;
-    color:white;
-    font-weight:bold;
+
+.successMessage{
+    text-align: center;
+    align-items: center;
 }

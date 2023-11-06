@@ -17,16 +17,16 @@ function clearConfirmation(){
 function view(count){
     const popup = document.querySelector(`#viewPopUp`)
     popup.style.display="block";
-    const object = tasks.find(obj => obj.id === count);
-    document.getElementById("viewTask").textContent=object.name;
-    document.getElementById("viewPriority").textContent=object.priority;
-    document.getElementById("viewTime").textContent=object.scheduledTime;
-    const formattedCreateDateScheduledDate = new Date(object.scheduledDate).toLocaleDateString('en-GB');
-    const formattedCreateDate = new Date(object.createDate).toLocaleDateString('en-GB');
+    const taskToView = tasks.find(obj => obj.id === count);
+    document.getElementById("viewTask").textContent=taskToView.name;
+    document.getElementById("viewPriority").textContent=taskToView.priority;
+    document.getElementById("viewTime").textContent=taskToView.scheduledTime;
+    const formattedCreateDateScheduledDate = new Date(taskToView.scheduledDate).toLocaleDateString('en-GB');
+    const formattedCreateDate = new Date(taskToView.createDate).toLocaleDateString('en-GB');
     document.getElementById("viewDate").textContent=formattedCreateDateScheduledDate;
     document.getElementById("viewCreateDate").textContent=formattedCreateDate;
-    document.getElementById("viewStatus").textContent=object.status;
-    document.getElementById("viewId").textContent=object.id;
+    document.getElementById("viewStatus").textContent=taskToView.status;
+    document.getElementById("viewId").textContent=taskToView.id;
     cancelView.addEventListener("click",function(){
         popup.style.display="none";
     });
@@ -41,31 +41,31 @@ function edit(count){
     document.getElementById("editDate").value=taskToEdit.scheduledDate;
     document.getElementById("editTime").value=taskToEdit.scheduledTime;
     editTask.addEventListener("click", function () {
-    const updatedName = document.getElementById("editName").value;
-    const updatedPriority = document.getElementById("editPriority").value;
-    const updatedDate = document.getElementById("editDate").value;
-    const updatedTime = document.getElementById("editTime").value;
-    const updatedTasks = tasks.map(task => {
-        if (task.id === count) {
-            return {
-                id:task.id,
-                name: updatedName,
-                priority: updatedPriority,
-                scheduledDate: updatedDate,
-                scheduledTime: updatedTime,
-                createDate:task.createDate,
-                status:task.status        
-            };
-        }
-        return task;
-    });
-    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-    display();
-    edit.style.display="none";
-    editSuccess.style.display = "block";
-    setTimeout(function() {
-        editSuccess.style.display = "none";
-    }, 2000);
+        const updatedName = document.getElementById("editName").value;
+        const updatedPriority = document.getElementById("editPriority").value;
+        const updatedDate = document.getElementById("editDate").value;
+        const updatedTime = document.getElementById("editTime").value;
+        const updatedTasks = tasks.map(task => {
+            if (task.id === count) {
+                return {
+                    id:task.id,
+                    name: updatedName,
+                    priority: updatedPriority,
+                    scheduledDate: updatedDate,
+                    scheduledTime: updatedTime,
+                    createDate:task.createDate,
+                    status:task.status        
+                };
+            }
+            return task;
+        });
+        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+        display();
+        edit.style.display="none";
+        editSuccess.style.display = "block";
+        setTimeout(function() {
+            editSuccess.style.display = "none";
+        }, 2000);
     });  
 }
 
@@ -73,7 +73,7 @@ function deleteTask(count){
     deletePopup.style.display="block";
     tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     deleteConfirmation.addEventListener("click",function(){
-    const index = tasks.findIndex(obj => obj.id === count);
+        const index = tasks.findIndex(obj => obj.id === count);
         if (index !== -1){
             tasks.splice(index,1);
             localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -90,13 +90,13 @@ function deleteTask(count){
 function check(count){
     let element=document.getElementById("toggle"+count);
     tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    const object = tasks.find(obj => obj.id === count);
+    const taskForCheck = tasks.find(obj => obj.id === count);
     if(element.style.textDecoration!="line-through"){
         element.style.textDecoration="line-through";
-        object.status="Completed";
+        taskForCheck.status="Completed";
     }else{
         element.style.textDecoration="none";
-        object.status="not completed";
+        taskForCheck.status="not completed";
     }
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
