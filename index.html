@@ -47,7 +47,7 @@
                 <label for="date">Time</label><br>
                 <input type="time" id="taskTime" name="time" required><br><br>
                 <button id="addNewTask" class="addButtonColor" class="cancelForm" type="button" onclick="addItem()"> Add </button>
-                <button id="cancelAddForm" class="cancelButtonColor" class="cancelForm" type="button" onclick="cancelItem()"> Cancel </button>
+                <button id="cancelAddForm" class="cancelButtonColor cancelForm" type="button" onclick="cancelItem()"> Cancel </button>
             </form>
 
             <form id="editForm" class="addForm">
@@ -65,7 +65,7 @@
                 <input type="date" id="editDate" name="date" required><br><br>
                 <label for="date">Time</label><br>
                 <input type="time" id="editTime" name="time" required><br><br>
-                <button id="editTask" class="addButtonColor" class="cancelForm" type="button"> Update </button>
+                <button id="editTask" class="addButtonColor cancelForm" type="button"> Update </button>
                 <button id="cancelEdit" class="cancelButtonColor" class="cancelForm" type="button" onclick="cancelItem()"> Cancel </button>
             </form>
 
@@ -105,7 +105,7 @@
 
             <div id="deletePopup" class="popup deleteclearPopup">
                 <p class="confirmMessage">Do you want to delete?</p>
-                <button id="deleteConfirmation" class="confirmation addButtonColor" type="button">Delete</button>
+                <button id="dltconfirmation" class="confirmation addButtonColor" type="button">Delete</button>
                 <button id="cancelDelete" class="confirmation cancelButtonColor" type="button" onclick="cancelItem()">Cancel</button>
             </div>
 

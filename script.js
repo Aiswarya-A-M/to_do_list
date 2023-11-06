@@ -13,10 +13,10 @@ function clearConfirmation() {
   }, 2000);
 }
 
-function view(count) {
+function view(id) {
   const popup = document.querySelector(`#viewPopUp`);
   popup.style.display = "block";
-  const taskToView = tasks.find((obj) => obj.id === count);
+  const taskToView = tasks.find((obj) => obj.id === id);
   document.getElementById("viewTask").textContent = taskToView.name;
   document.getElementById("viewPriority").textContent = taskToView.priority;
   document.getElementById("viewTime").textContent = taskToView.scheduledTime;
@@ -36,10 +36,10 @@ function view(count) {
   });
 }
 
-function edit(count) {
+function edit(id) {
   const edit = document.querySelector(`#editForm`);
   edit.style.display = "block";
-  const taskToEdit = tasks.find((task) => task.id === count);
+  const taskToEdit = tasks.find((task) => task.id === id);
   document.getElementById("editName").value = taskToEdit.name;
   document.getElementById("editPriority").value = taskToEdit.priority;
   document.getElementById("editDate").value = taskToEdit.scheduledDate;
@@ -50,7 +50,7 @@ function edit(count) {
     const updatedDate = document.getElementById("editDate").value;
     const updatedTime = document.getElementById("editTime").value;
     const updatedTasks = tasks.map((task) => {
-      if (task.id === count) {
+      if (task.id === id) {
         return {
           id: task.id,
           name: updatedName,
@@ -73,16 +73,16 @@ function edit(count) {
   });
 }
 
-function deleteTask(count) {
+function deleteTask(id) {
   deletePopup.style.display = "block";
   tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  deleteConfirmation.addEventListener("click", function () {
-    const index = tasks.findIndex((obj) => obj.id === count);
+  dltconfirmation.addEventListener("click", function () {
+    const index = tasks.findIndex((obj) => obj.id === id);
     if (index !== -1) {
-      tasks.splice(index, 1);
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-      deleteSuccess.style.display = "block";
-      display();
+        tasks.splice(index, 1);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        deleteSuccess.style.display = "block";
+        display();
     }
   });
   setTimeout(function () {
@@ -91,10 +91,10 @@ function deleteTask(count) {
   }, 2000);
 }
 
-function check(count) {
-  let element = document.getElementById("toggle" + count);
+function check(id) {
+  let element = document.getElementById("toggle" + id);
   tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  const taskForCheck = tasks.find((obj) => obj.id === count);
+  const taskForCheck = tasks.find((obj) => obj.id === id);
   if (element.style.textDecoration != "line-through") {
     element.style.textDecoration = "line-through";
     taskForCheck.status = "Completed";
@@ -117,38 +117,40 @@ function addTask() {
 }
 
 function addItem() {
-  let count;
-  if (tasks.length === 0) {
-    count = 1;
-  } else {
-    count = Math.max(...tasks.map((task) => task.id)) + 1;
-  }
   let name = document.getElementById("taskName");
   let priority = document.getElementById("taskPriority");
   let scheduledTime = document.getElementById("taskTime");
   let scheduledDate = document.getElementById("taskDate").value;
-  let createDate = new Date();
-  let status = "not completed";
-  tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  newTask = {
-    id: count,
-    name: name.value,
-    priority: priority.value,
-    scheduledTime: scheduledTime.value,
-    scheduledDate: scheduledDate,
-    createDate: createDate,
-    status: status,
-  };
-  tasks.push(newTask);
-  tasks.sort((a, b) => new Date(b.createDate) - new Date(a.createDate));
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-  addSuccess.style.display = "block";
-  setTimeout(function () {
-    addSuccess.style.display = "none";
-  }, 2000);
-  display();
-  cancelItem();
-  addForm.reset();
+  if(name!=="" && priority!=="" && scheduledTime!=="" && scheduledDate!==""){
+    let id;
+    if (tasks.length === 0) {
+      id = 1;
+    } else {
+      id = Math.max(...tasks.map((task) => task.id)) + 1;
+    }
+    let createDate = new Date();
+    let status = "not completed";
+    tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    newTask = {
+      id: id,
+      name: name.value,
+      priority: priority.value,
+      scheduledTime: scheduledTime.value,
+      scheduledDate: scheduledDate,
+      createDate: createDate,
+      status: status,
+    };
+    tasks.push(newTask);
+    tasks.sort((a, b) => new Date(b.createDate) - new Date(a.createDate));
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    addSuccess.style.display = "block";
+    setTimeout(function () {
+      addSuccess.style.display = "none";
+    }, 2000);
+    display();
+    cancelItem();
+    addForm.reset();
+  }
 }
 
 function display() {
