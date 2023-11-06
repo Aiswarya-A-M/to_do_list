@@ -54,7 +54,7 @@ function edit(count){
                     scheduledDate: updatedDate,
                     scheduledTime: updatedTime,
                     createDate:task.createDate,
-                    status:task.status        
+                    status:task.status
                 };
             }
             return task;
@@ -66,7 +66,7 @@ function edit(count){
         setTimeout(function() {
             editSuccess.style.display = "none";
         }, 2000);
-    });  
+    });
 }
 
 function deleteTask(count){
@@ -80,7 +80,7 @@ function deleteTask(count){
             deleteSuccess.style.display="block";
             display();
         }
-    });  
+    });
     setTimeout(function() {
         deleteSuccess.style.display = "none";
         deletePopup.style.display="none";
@@ -200,7 +200,7 @@ function display(){
         tableRow.appendChild(tableDataName);
         tableRow.appendChild(coloumnForButtons);
         taskList.appendChild(tableRow); 
-});
+    });
 }
 
 window.addEventListener('load', display());
