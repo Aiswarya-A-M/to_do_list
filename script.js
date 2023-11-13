@@ -20,14 +20,13 @@ function view(id) {
   document.getElementById("viewTask").textContent = taskToView.name;
   document.getElementById("viewPriority").textContent = taskToView.priority;
   document.getElementById("viewTime").textContent = taskToView.scheduledTime;
-  const formattedCreateDateScheduledDate = new Date(
+  const formattedScheduledDate = new Date(
     taskToView.scheduledDate
   ).toLocaleDateString("en-GB");
   const formattedCreateDate = new Date(
     taskToView.createDate
   ).toLocaleDateString("en-GB");
-  document.getElementById("viewDate").textContent =
-    formattedCreateDateScheduledDate;
+  document.getElementById("viewDate").textContent = formattedScheduledDate;
   document.getElementById("viewCreateDate").textContent = formattedCreateDate;
   document.getElementById("viewStatus").textContent = taskToView.status;
   document.getElementById("viewId").textContent = taskToView.id;
@@ -75,7 +74,7 @@ function edit(id) {
 
 function deleteTask(id) {
   deletePopUp.style.display = "block";
-  tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   deleteConfirmation.addEventListener("click", function () {
     const index = tasks.findIndex((obj) => obj.id === id);
     if (index !== -1) {
@@ -93,17 +92,13 @@ function deleteTask(id) {
 
 function check(id) {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  console.log(tasks);
   const taskForCheck = tasks.find((obj) => obj.id === id);
   if (taskForCheck.status === "not completed") {
     taskForCheck.status = "Completed";
-    console.log(taskForCheck.status);
   } else {
     taskForCheck.status = "not completed";
-    console.log(taskForCheck.status);
   }
   localStorage.setItem("tasks", JSON.stringify(tasks));
-  console.log("end");
   display();
 }
 
@@ -111,7 +106,7 @@ function cancelItem() {
   addForm.style.display = "none";
   clearPopUp.style.display = "none";
   deletePopUp.style.display = "none";
-  editForm.style.display = "none"; //3ei3
+  editForm.style.display = "none";
 }
 
 function addTask() {
@@ -185,7 +180,6 @@ function display() {
         tableRow.style.backgroundColor = "white";
     }
     if (task.status === "Completed") {
-      console.log("no way");
       tableDataName.style.textDecoration = "line-through";
       checkBox.checked = task.status === "Completed";
     } else {
