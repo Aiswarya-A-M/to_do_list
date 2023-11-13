@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -131,4 +131,211 @@
     </div>
 </body>
 <script src="script.js"></script>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.png" />
+    <title>Chart Your Day</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="mainbody">
+      <div class="upper bodyStyle">
+        <img id="imgOfLogo" src="assets/logo.png" alt="Your Logo" />
+        <h1 id="heading">To Do</h1>
+      </div>
+      <div class="lower bodyStyle">
+        <div class="topLayer">
+          <table id="displayTable" class="styleTable">
+            <tr class="tableHead">
+              <th id="check"></th>
+              <th id="tableId">Id</th>
+              <th id="tableTask">Tasks</th>
+              <th id="columnForButtons"></th>
+            </tr>
+            <tr id="tableBody" class="styleTable">
+              <td class="tableCheck"></td>
+            </tr>
+          </table>
+          <button
+            id="addTask"
+            class="addClearBtn addButtonColor"
+            onclick="addTask()"
+          >
+            Add
+          </button>
+          <button
+            id="clearTask"
+            class="addClearBtn cancelButtonColor"
+            onclick="clearTask()"
+          >
+            Clear
+          </button>
+        </div>
+
+        <form id="addForm" class="addForm">
+          <h2>Add Task</h2>
+          <label>Task Name:</label><br />
+          <input id="taskName" type="text" required /><br />
+          <label>Priority:</label><br />
+          <select id="taskPriority" name="priority">
+            <option value="low">low</option>
+            <option value="medium">medium</option>
+            <option value="high">high</option>
+            <option value="severe">severe</option></select
+          ><br />
+          <label for="date">Date</label><br />
+          <input type="date" id="taskDate" name="date" required /><br /><br />
+          <label for="date">Time</label><br />
+          <input type="time" id="taskTime" name="time" required /><br /><br />
+          <button
+            id="addNewTask"
+            class="addButtonColor"
+            class="cancelForm"
+            type="button"
+            onclick="addItem()"
+          >
+            Add
+          </button>
+          <button
+            id="cancelAddForm"
+            class="cancelButtonColor cancelForm"
+            type="button"
+            onclick="cancelItem()"
+          >
+            Cancel
+          </button>
+        </form>
+
+        <form id="editForm" class="addForm">
+          <h2>Edit Task</h2>
+          <label>Task Name:</label><br />
+          <input id="editName" type="text" required /><br />
+          <label>Priority:</label><br />
+          <select id="editPriority" name="priority">
+            <option value="low">low</option>
+            <option value="medium">medium</option>
+            <option value="high">high</option>
+            <option value="severe">severe</option></select
+          ><br />
+          <label for="date">Date</label><br />
+          <input type="date" id="editDate" name="date" required /><br /><br />
+          <label for="date">Time</label><br />
+          <input type="time" id="editTime" name="time" required /><br /><br />
+          <button id="editTask" class="addButtonColor cancelForm" type="button">
+            Update
+          </button>
+          <button
+            id="cancelEdit"
+            class="cancelButtonColor"
+            class="cancelForm"
+            type="button"
+            onclick="cancelItem()"
+          >
+            Cancel
+          </button>
+        </form>
+
+        <div id="viewPopUp" class="removePopUp viewPopUp">
+          <table id="viewTable">
+            <tr>
+              <th>Id</th>
+              <td id="viewId"></td>
+            </tr>
+            <tr>
+              <th>Task Name</th>
+              <td id="viewTask"></td>
+            </tr>
+            <tr>
+              <th>Task Priority</th>
+              <td id="viewPriority"></td>
+            </tr>
+            <tr>
+              <th>Scheduled Date</th>
+              <td id="viewDate"></td>
+            </tr>
+            <tr>
+              <th>Scheduled Time</th>
+              <td id="viewTime"></td>
+            </tr>
+            <tr>
+              <th>Created Date</th>
+              <td id="viewCreateDate"></td>
+            </tr>
+            <tr>
+              <th>Status</th>
+              <td id="viewStatus"></td>
+            </tr>
+          </table>
+          <button
+            id="cancelView"
+            class="addButtonColor confirmation"
+            type="button"
+          >
+            Ok
+          </button>
+        </div>
+
+        <div id="deletePopUp" class="popUp removePopUp">
+          <p class="confirmMessage">Do you want to delete?</p>
+          <button
+            id="dltconfirmation"
+            class="confirmation addButtonColor"
+            type="button"
+          >
+            Delete
+          </button>
+          <button
+            id="cancelDelete"
+            class="confirmation cancelButtonColor"
+            type="button"
+            onclick="cancelItem()"
+          >
+            Cancel
+          </button>
+        </div>
+
+        <div id="clearPopUp" class="popUp removePopUp">
+          <p class="confirmMessage">Do you want to clear all?</p>
+          <button
+            id="clearConfirmation"
+            class="confirmation addButtonColor"
+            type="button"
+            onclick="clearConfirmation()"
+          >
+            Clear
+          </button>
+          <button
+            id="cancelClearId"
+            class="confirmation cancelButtonColor"
+            type="button"
+            onclick="cancelItem()"
+          >
+            Cancel
+          </button>
+        </div>
+
+        <div class="success successMessage" id="addSuccess">
+          <h1 class="successMessage">You added task successfully!</h1>
+        </div>
+        <div class="success" id="clearSuccess">
+          <h1 class="successMessage">You deleted all tasks successfully!</h1>
+        </div>
+        <div class="success successMessage" id="deleteSuccess">
+          <h1 class="successMessage">You delete task successfully!</h1>
+        </div>
+        <div class="success successMessage" id="editSuccess">
+          <h1 class="successMessage">You edit task successfully!</h1>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
 </html>
