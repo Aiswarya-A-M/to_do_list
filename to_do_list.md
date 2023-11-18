@@ -13,3 +13,4 @@ This is a simple todo list application built using HTML, CSS, and JavaScript. It
 
 <h2>How to Use</h2>
 To use this todoList, simply open the index.html file in your web browser<br>
+![to_do](https://github.com/Aiswarya-A-M/to_do_list/assets/148937898/de5c2c28-5636-4163-b8db-8f60b7d81e9f)
