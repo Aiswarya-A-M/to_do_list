@@ -1,105 +1,191 @@
-.mainbody{
-    background-color: rgb(9, 110, 110);
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    z-index: 1;
+.mainBody {
+  background-color: rgb(9, 110, 110);
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
 }
-.upper{
-    width:97.5%;
-    height: 20%;
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    position: absolute;
-    z-index: 2;
-    background-color: rgb(186, 176, 242);
-}
-.lower{
-    width:97.5%;
-    height: 75%;
-    margin-top: 180px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    z-index: 1;
-    position: absolute;
-    background-color: rgb(186, 176, 242);
-    
-}
-#heading{
-    font-family:'cursive';
-    font-weight: bolder;
-    font-style: oblique;
-    font-size:500%;
-    text-align: center;
-    text-shadow: 6px 6px 6px #440546;
-    margin-top: 20px;
-    color: rgb(0, 0, 0);
-}
-.displayTable{
-        width:80%;
-        margin-left: 15%;
-        font-size: 30px;
-        z-index: 2;
-        position: absolute;
 
+.upper {
+  width: 97.5%;
+  height: 20%;
+  margin-top: 20px;
+  z-index: 2;
 }
-#head{
-    text-align: center;
-    font-size: larger;
-    margin-left: 15%;
+
+.lower {
+  width: 97.5%;
+  height: 75%;
+  margin-top: 180px;
+  z-index: 1;
 }
-.tasks{
-    margin-left:20%;
+
+.bodyStyle {
+  background-color: rgb(186, 176, 242);
+  position: absolute;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
-#add{ 
-    height:100px;
-    width:100px;
-    border-radius: 50%;
-    border-color:black;
-    background-color: aqua;
-    font-size: 350%;
-    display: flex;
-    float:left;
-    align-items:center ;
-    justify-content: center;
-    margin-left:75%
+
+#viewTable {
+  text-align: left;
 }
-#clear{
-    height:100px;
-    width:100px;
-    border-radius: 50%;
-    border-color:black;
-    background-color: aqua;
-    font-size: 150%;
-    display: flex;
-    align-items:center ;
-    justify-content: center;
-    margin-left:85%
+
+#heading {
+  float: left;
+  font-family: "cursive";
+  font-weight: bolder;
+  font-style: oblique;
+  font-size: 500%;
+  text-align: center;
+  text-shadow: 6px 6px 6px #440546;
+  margin-top: 5px;
+  color: rgb(14, 13, 13);
 }
-#addForm{
-    height:88%;
-    margin-top: 1%;
-    text-align: center;
-    font-size: 175%;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 1%;
-    z-index: 3;
+
+.topLayer {
+  display: flex;
 }
-.viewPopUp{
-    align-items: center;
-    background-color: rgb(255, 246, 246);
-    width: 40%;
-    margin-left: 30%;
-    height: 50%;
-    padding: 2%;
-    position: absolute; 
-    z-index: 3; 
-    text-align: center;
-    display: none;
+
+#imgOfLogo {
+  align-items: center;
+  width: 100px;
+  margin-top: 10px;
+  float: left;
+  margin-left: 450px;
 }
-table, th, td {
-    border: 1px solid;
-  }
+
+.styleTable {
+  width: 600px;
+  text-align: center;
+  font-size: 30px;
+  z-index: 2;
+  position: absolute;
+  margin-top: 25px;
+  float: left;
+}
+
+#displayTable {
+  margin-left: 350px;
+}
+
+#tableBody {
+  margin-left: 17px;
+  border-bottom: 1px solid antiquewhite;
+}
+
+.addClearBtn {
+  margin-top: 15px;
+  color: white;
+  height: 62px;
+  width: 62px;
+  border-color: black;
+  font-weight: bold;
+  font-size: 150%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+#addTask {
+  float: left;
+  margin-left: 1000px;
+}
+
+#clearTask {
+  margin-left: 100px;
+}
+
+.addForm {
+  height: 300px;
+  width: 300px;
+  margin-left: 38%;
+  text-align: center;
+  font-size: 110%;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 1%;
+  z-index: 3;
+  display: none;
+  background-color: aqua;
+  position: absolute;
+}
+
+th,
+td {
+  width: 600px;
+  margin-left: 25px;
+  font-size: 30px;
+  z-index: 2;
+  position: relative;
+  margin-top: 25px;
+}
+
+#cancelViewPopUp {
+  margin-top: 10%;
+}
+
+.popUp {
+  align-items: center;
+  height: 25%;
+  text-align: center;
+  background-color: antiquewhite;
+}
+
+.removePopUp {
+  width: 40%;
+  margin-left: 30%;
+  padding: 2%;
+  position: absolute;
+  z-index: 3;
+  display: none;
+}
+
+#viewPopUp {
+  align-items: left;
+  height: 60%;
+  text-align: left;
+  background-color: antiquewhite;
+  text-align: center;
+}
+
+#confirmMessage {
+  font-size: 25px;
+}
+
+.confirmation {
+  height: 30px;
+  width: 60px;
+  margin-left: 28px;
+  color: white;
+  font-weight: bold;
+}
+
+.cancelForm {
+  font-weight: bold;
+  color: white;
+}
+
+.cancelButtonColor {
+  background-color: red;
+}
+
+.addButtonColor {
+  background-color: green;
+}
+
+.success {
+  background-color: rgb(255, 246, 246);
+  width: 40%;
+  margin-left: 30%;
+  height: 30%;
+  padding: 2%;
+  position: absolute;
+  z-index: 3;
+  display: none;
+}
+
+.successMessage {
+  text-align: center;
+  align-items: center;
+}
